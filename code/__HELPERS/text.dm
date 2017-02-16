@@ -91,6 +91,11 @@
 /proc/adminscrub(var/t,var/limit=MAX_MESSAGE_LEN)
 	return copytext((lhtml_encode(strip_html_simple(t))),1,limit)
 
+/proc/replace_characters(var/t,var/list/repl_chars)
+	for(var/char in repl_chars)
+		t = replacetext(t, char, repl_chars[char])
+	return t
+
 /proc/reverse_text(txt)
   var/i = length(txt)+1
   . = ""
