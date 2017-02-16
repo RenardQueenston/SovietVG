@@ -25,7 +25,7 @@ var/global/global_playlists = list()
 /proc/load_juke_playlists()
 	if(!config.media_base_url)
 		return
-	for(var/playlist_id in list("bar", "jazz", "rock", "muzak", "emagged", "endgame", "clockwork", "vidyaone", "vidyatwo", "vidyathree", "vidyafour"))
+	for(var/playlist_id in list("bar", "jazz"))
 		var/url="[config.media_base_url]/jukebox.php?playlist=[playlist_id]"
 		testing("Updating playlist from [url]...")
 
@@ -638,11 +638,6 @@ var/global/list/loopModeNames=list(
 	playlists=list(
 		"bar"  = "Bar Mix",
 		"jazz" = "Jazz",
-		"rock" = "Rock",
-		"vidyaone" = "Vidya Pt.1",
-		"vidyatwo" = "Vidya Pt.2",
-		"vidyathree" = "Vidya Pt.3",
-		"vidyafour" = "Vidya Pt.4",
 	)
 
 // Relaxing elevator music~
@@ -658,13 +653,6 @@ var/global/list/loopModeNames=list(
 	playlists=list(
 		"bar"  = "Bar Mix",
 		"jazz" = "Jazz",
-		"rock" = "Rock",
-		"muzak" = "Muzak",
-		"thunderdome" = "Thunderdome", // For thunderdome I guess
-		"vidyaone" = "Vidya Pt.1",
-		"vidyatwo" = "Vidya Pt.2",
-		"vidyathree" = "Vidya Pt.3",
-		"vidyafour" = "Vidya Pt.4",
 	)
 
 // So I don't have to do all this shit manually every time someone sacrifices pun-pun.
@@ -683,21 +671,6 @@ var/global/list/loopModeNames=list(
 	playlists=list(
 		"bar"  = "Bar Mix",
 		"jazz" = "Jazz",
-		"rock" = "Rock",
-		"muzak" = "Muzak",
-
-
-		"emagged" = "Syndie Mix",
-		"shuttle" = "Shuttle",
-
-		"endgame" = "Apocalypse",
-		"clockwork" = "Clockwork", // Unfinished new cult stuff
-		"thunderdome" = "Thunderdome", // For thunderdome I guess
-//Vidya musak
-		"vidyaone" = "Vidya Pt.1",
-		"vidyatwo" = "Vidya Pt.2",
-		"vidyathree" = "Vidya Pt.3",
-		"vidyafour" = "Vidya Pt.4",
 	)
 
 /obj/machinery/media/jukebox/superjuke/attackby(obj/item/W, mob/user)
