@@ -9,7 +9,6 @@
  *			Misc
  */
 
-
 /*
  * SQL sanitization
  */
@@ -79,7 +78,7 @@
 
 //Runs byond's sanitization proc along-side sanitize_simple
 /proc/sanitize(var/t)
-	return lhtml_encode(t)
+	return lhtml_encode(sanitize_simple(t, repl_chars))
 
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's lhtml_encode()
@@ -90,11 +89,6 @@
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' that lhtml_encode() would cause
 /proc/adminscrub(var/t,var/limit=MAX_MESSAGE_LEN)
 	return copytext((lhtml_encode(strip_html_simple(t))),1,limit)
-
-/proc/replace_characters(var/t,var/list/repl_chars)
-	for(var/char in repl_chars)
-		t = replacetext(t, char, repl_chars[char])
-	return t
 
 /proc/reverse_text(txt)
   var/i = length(txt)+1
