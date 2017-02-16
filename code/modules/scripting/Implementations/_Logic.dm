@@ -137,7 +137,7 @@
 // String stuff
 /proc/n_lower(var/string)
 	if(istext(string))
-		return lowertext_alt(string)
+		return lowertext(string)
 
 /proc/n_upper(var/string)
 	if(istext(string))

@@ -394,7 +394,7 @@
 			var/displayName = uppertext_alt(s)
 			dat += "<a href='byond://?src=\ref[src];software=buy;sub=1;buy=[s]'>[displayName]</a> ([cost]) <br>"
 		else
-			var/displayName = lowertext_alt(s)
+			var/displayName = lowertext(s)
 			dat += "[displayName] (Download Complete) <br>"
 	dat += "</p>"
 	return dat

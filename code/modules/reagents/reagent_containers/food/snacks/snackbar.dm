@@ -30,7 +30,7 @@
 			newname += " and [r.name]"
 		else
 			newname += ", [r.name]"
-	name = lowertext_alt("[newname] snack bar")
+	name = lowertext("[newname] snack bar")
 
 //Instances for mapping
 

@@ -156,7 +156,7 @@ They can only use one tool at a time, they can't choose modules, and they have 1
 	if (custom_sprite == 1)
 		module_sprites["Custom"] = "[src.ckey]-[modtype]"
 
-	hands.icon_state = lowertext_alt(modtype)
+	hands.icon_state = lowertext(modtype)
 	feedback_inc("mommi_[lowertext_alt(modtype)]",1)
 	updatename()
 

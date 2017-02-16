@@ -289,7 +289,7 @@ var/global/floorIsLava = 0
 		to_chat(usr, "Error: you are not an admin!")
 		return
 	checkSessionKey()
-	var/ckey = lowertext_alt(input("Type player ckey", "ckey", null) as text | null)
+	var/ckey = lowertext(input("Type player ckey", "ckey", null) as text | null)
 	usr << link(getVGPanel("rapsheet", admin = 1, query = list("ckey" = ckey)))
 //	usr << link("[config.vgws_base_url]/index.php/rapsheet/?s=[sessKey]&ckey=[ckey]")
 	return

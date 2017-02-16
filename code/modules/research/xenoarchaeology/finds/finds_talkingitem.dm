@@ -36,11 +36,11 @@
 			var/next = Xa + 1
 			if(heard_words.len > 20 + rand(10,20))
 				heard_words.Remove(heard_words[1])
-			if(!heard_words["[lowertext_alt(seperate[Xa])]"])
-				heard_words["[lowertext_alt(seperate[Xa])]"] = list()
-			var/list/w = heard_words["[lowertext_alt(seperate[Xa])]"]
+			if(!heard_words["[lowertext(seperate[Xa])]"])
+				heard_words["[lowertext(seperate[Xa])]"] = list()
+			var/list/w = heard_words["[lowertext(seperate[Xa])]"]
 			if(w)
-				w.Add("[lowertext_alt(seperate[next])]")
+				w.Add("[lowertext(seperate[next])]")
 //			to_chat(world, "Adding [lowertext_alt(seperate[next])] to [lowertext_alt(seperate[Xa])]")
 
 		if(!rand(0, 5))
