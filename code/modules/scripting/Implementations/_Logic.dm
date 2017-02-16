@@ -141,7 +141,7 @@
 
 /proc/n_upper(var/string)
 	if(istext(string))
-		return uppertext_alt(string)
+		return uppertext(string)
 
 /proc/time()
 	return world.time + (12 HOURS)

@@ -41,7 +41,7 @@
 			var/list/w = heard_words["[lowertext(seperate[Xa])]"]
 			if(w)
 				w.Add("[lowertext(seperate[next])]")
-//			to_chat(world, "Adding [lowertext_alt(seperate[next])] to [lowertext_alt(seperate[Xa])]")
+//			to_chat(world, "Adding [lowertext(seperate[next])] to [lowertext(seperate[Xa])]")
 
 		if(!rand(0, 5))
 			spawn(2) SaySomething(pick(seperate))
@@ -52,7 +52,7 @@
 /obj/item/weapon/talkingcrystal/proc/debug()
 	//set src in view()
 	for(var/v in heard_words)
-		to_chat(world, "[uppertext_alt(v)]")
+		to_chat(world, "[uppertext(v)]")
 		var/list/d = heard_words["[v]"]
 		for(var/X in d)
 			to_chat(world, "[X]")
@@ -69,10 +69,10 @@
 	else
 		text = pick(splittext(word, " "))
 	if(length(text)==1)
-		text=uppertext_alt(text)
+		text=uppertext(text)
 	else
 		var/cap = copytext(text,1,2)
-		cap = uppertext_alt(cap)
+		cap = uppertext(cap)
 		cap += copytext(text,2,length(text)+1)
 		text=cap
 	var/q = 0
@@ -80,7 +80,7 @@
 	if(msg=="What" | msg == "Who" | msg == "How" | msg == "Why" | msg == "Are")
 		q=1
 
-	text=lowertext_alt(text)
+	text=lowertext(text)
 	for(var/ya,ya <= limit,ya++)
 
 		if(heard_words.Find("[text]"))
