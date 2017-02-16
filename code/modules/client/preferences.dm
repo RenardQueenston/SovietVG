@@ -858,7 +858,7 @@ var/const/MAX_SAVE_SLOTS = 8
 	//Determine department level
 	var/d_level
 	if(istext(level))
-		switch(lowertext(level))
+		switch(lowertext_alt(level))
 			if("high")
 				d_level = 1
 			if("med", "medium")
@@ -987,30 +987,30 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 		else
 			user << browse(null, "window=records")
 		if(href_list["task"] == "med_record")
-			var/medmsg = input(usr,"Set your medical notes here.","Medical Records",html_decode(med_record)) as message
+			var/medmsg = input(usr,"Set your medical notes here.","Medical Records",lhtml_decode(med_record)) as message
 
 			if(medmsg != null)
 				medmsg = copytext(medmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				medmsg = html_encode(medmsg)
+				medmsg = lhtml_encode(medmsg)
 
 				med_record = medmsg
 				SetRecords(user)
 
 		if(href_list["task"] == "sec_record")
-			var/secmsg = input(usr,"Set your security notes here.","Security Records",html_decode(sec_record)) as message
+			var/secmsg = input(usr,"Set your security notes here.","Security Records",lhtml_decode(sec_record)) as message
 
 			if(secmsg != null)
 				secmsg = copytext(secmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				secmsg = html_encode(secmsg)
+				secmsg = lhtml_encode(secmsg)
 
 				sec_record = secmsg
 				SetRecords(user)
 		if(href_list["task"] == "gen_record")
-			var/genmsg = input(usr,"Set your employment notes here.","Employment Records",html_decode(gen_record)) as message
+			var/genmsg = input(usr,"Set your employment notes here.","Employment Records",lhtml_decode(gen_record)) as message
 
 			if(genmsg != null)
 				genmsg = copytext(genmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				genmsg = html_encode(genmsg)
+				genmsg = lhtml_encode(genmsg)
 
 				gen_record = genmsg
 				SetRecords(user)
