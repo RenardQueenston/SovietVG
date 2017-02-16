@@ -81,11 +81,6 @@
 /proc/sanitize(var/t,var/list/repl_chars = null)
 	return lhtml_encode(sanitize_simple(t,repl_chars))
 
-/proc/replace_characters(var/t,var/list/repl_chars)
-	for(var/char in repl_chars)
-		t = replacetext(t, char, repl_chars[char])
-	return t
-
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's lhtml_encode()
 /proc/strip_html(var/t,var/limit=MAX_MESSAGE_LEN)
