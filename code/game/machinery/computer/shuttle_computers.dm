@@ -177,7 +177,7 @@
 			else
 				dat += "Additional information has not been provided."
 		else if(!shuttle.linked_area)
-			dat = "<h2><font color='red'>UNABLE TO FIND [uppertext(shuttle.name)]</font></h2>"
+			dat = "<h2><font color='red'>UNABLE TO FIND [uppertext_alt(shuttle.name)]</font></h2>"
 		else if(!shuttle.linked_port)
 			dat += {"<h2><font color='red'>This shuttle has no docking port specified.</font></h2><br>
 				<a href='?src=\ref[src];link_to_port=1'>Scan for docking ports</a>"}
