@@ -107,31 +107,31 @@ var/global/list/genders=list(
 	if(findtext(s,"$sub"))
 		s=replacetextEx(s,"$sub",subject)
 		s=replacetextEx(s,"$Sub",capitalize(subject))
-		s=replacetextEx(s,"$SUB",uppertext_alt(subject))
+		s=replacetextEx(s,"$SUB",uppertext(subject))
 
 	// Me
 	if(findtext(s,"$obj"))
 		s=replacetextEx(s,"$obj",objective)
 		s=replacetextEx(s,"$Obj",capitalize(objective))
-		s=replacetextEx(s,"$OBJ",uppertext_alt(objective))
+		s=replacetextEx(s,"$OBJ",uppertext(objective))
 
 	// Myself
 	if(findtext(s,"$ref"))
 		s=replacetextEx(s,"$ref",reflexive)
 		s=replacetextEx(s,"$Ref",capitalize(reflexive))
-		s=replacetextEx(s,"$REF",uppertext_alt(reflexive))
+		s=replacetextEx(s,"$REF",uppertext(reflexive))
 
 	// Mine
 	if(findtext(s,"$posp"))
 		s=replacetextEx(s,"$posp",possessivePronoun)
 		s=replacetextEx(s,"$Posp",capitalize(possessivePronoun))
-		s=replacetextEx(s,"$POSP",uppertext_alt(possessivePronoun))
+		s=replacetextEx(s,"$POSP",uppertext(possessivePronoun))
 
 	// My
 	if(findtext(s,"$pos"))
 		s=replacetextEx(s,"$pos",possessive)
 		s=replacetextEx(s,"$Pos",capitalize(possessive))
-		s=replacetextEx(s,"$POS",uppertext_alt(possessive))
+		s=replacetextEx(s,"$POS",uppertext(possessive))
 
 	/////////////////////////////////////////////////////
 	// The rules for this shit is a little more complex,
@@ -145,31 +145,31 @@ var/global/list/genders=list(
 		if(findtext(s,"$himself"))
 			s=replacetextEx(s,"$himself",getHimself())
 			s=replacetextEx(s,"$Himself",capitalize(getHimself()))
-			s=replacetextEx(s,"$HIMSELF",uppertext_alt(getHimself()))
+			s=replacetextEx(s,"$HIMSELF",uppertext(getHimself()))
 
 		// Him
 		if(findtext(s,"$him"))
 			s=replacetextEx(s,"$him",getHim())
 			s=replacetextEx(s,"$Him",capitalize(getHim()))
-			s=replacetextEx(s,"$HIM",uppertext_alt(getHim()))
+			s=replacetextEx(s,"$HIM",uppertext(getHim()))
 
 		// His
 		if(findtext(s,"$his"))
 			s=replacetextEx(s,"$his",getHis())
 			s=replacetextEx(s,"$His",capitalize(getHis()))
-			s=replacetextEx(s,"$HIS",uppertext_alt(getHis()))
+			s=replacetextEx(s,"$HIS",uppertext(getHis()))
 
 		// He
 		if(findtext(s,"$he"))
 			s=replacetextEx(s,"$he",getHe())
 			s=replacetextEx(s,"$He",capitalize(getHe()))
-			s=replacetextEx(s,"$HE",uppertext_alt(getHe()))
+			s=replacetextEx(s,"$HE",uppertext(getHe()))
 
 		// Special case for "hers"
 		if(findtext(s,"$hers"))
 			s=replacetextEx(s,"$hers",getHers())
 			s=replacetextEx(s,"$Hers",capitalize(getHers()))
-			s=replacetextEx(s,"$HERS",uppertext_alt(getHers()))
+			s=replacetextEx(s,"$HERS",uppertext(getHers()))
 
 	return s
 

@@ -62,9 +62,9 @@ proc
 	if(!letter)
 		letter = copytext(A.name, 1, 2)
 		if(uppercase == 1)
-			letter = uppertext_alt(letter)
+			letter = uppertext(letter)
 		else if(uppercase == -1)
-			letter = lowertext_alt(letter)
+			letter = lowertext(letter)
 
 	var/image/text_image = new(loc = A)
 	text_image.maptext = "<font size = 8><b>[letter]</b></font>"

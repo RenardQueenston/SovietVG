@@ -858,7 +858,7 @@ var/const/MAX_SAVE_SLOTS = 8
 	//Determine department level
 	var/d_level
 	if(istext(level))
-		switch(lowertext_alt(level))
+		switch(lowertext(level))
 			if("high")
 				d_level = 1
 			if("med", "medium")

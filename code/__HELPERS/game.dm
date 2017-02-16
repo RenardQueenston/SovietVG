@@ -238,7 +238,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 
 /proc/get_mob_by_key(var/key)
 	for(var/mob/M in mob_list)
-		if(M.ckey == lowertext_alt(key))
+		if(M.ckey == lowertext(key))
 			return M
 	return null
 

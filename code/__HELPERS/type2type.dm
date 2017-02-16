@@ -94,7 +94,7 @@ proc/tg_jointext(list/list, glue = ",")
 
 //Turns text into proper directions
 /proc/text2dir(direction)
-	switch(uppertext_alt(direction))
+	switch(uppertext(direction))
 		if("NORTH")
 			return 1
 		if("SOUTH")

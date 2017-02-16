@@ -226,10 +226,10 @@
 		var/value = null
 
 		if (pos)
-			name = lowertext_alt(copytext(t, 1, pos))
+			name = lowertext(copytext(t, 1, pos))
 			value = copytext(t, pos + 1)
 		else
-			name = lowertext_alt(t)
+			name = lowertext(t)
 
 		if (!name)
 			continue
