@@ -77,8 +77,8 @@
 	return t
 
 //Runs byond's sanitization proc along-side sanitize_simple
-/proc/sanitize(var/t)
-	return lhtml_encode(sanitize_simple(t, repl_chars))
+/proc/sanitize(var/t,var/list/repl_chars = null)
+	return lhtml_encode(sanitize_simple(t,repl_chars))
 
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's lhtml_encode()
