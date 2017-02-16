@@ -991,7 +991,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 
 			if(medmsg != null)
 				medmsg = copytext(medmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				medmsg = html_encode(medmsg)
+				medmsg = lhtml_encode(medmsg)
 
 				med_record = medmsg
 				SetRecords(user)
@@ -1001,7 +1001,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 
 			if(secmsg != null)
 				secmsg = copytext(secmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				secmsg = html_encode(secmsg)
+				secmsg = lhtml_encode(secmsg)
 
 				sec_record = secmsg
 				SetRecords(user)
@@ -1010,7 +1010,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 
 			if(genmsg != null)
 				genmsg = copytext(genmsg, 1, MAX_PAPER_MESSAGE_LEN)
-				genmsg = html_encode(genmsg)
+				genmsg = lhtml_encode(genmsg)
 
 				gen_record = genmsg
 				SetRecords(user)
