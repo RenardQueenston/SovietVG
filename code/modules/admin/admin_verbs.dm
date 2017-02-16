@@ -96,6 +96,7 @@ var/list/admin_verbs_fun = list(
 	/client/proc/one_click_antag,
 	/client/proc/antag_madness,
 	/datum/admins/proc/toggle_aliens,
+	/datum/admins/verb/update_playlist,
 	// FUUUUCKED /client/proc/zombie_event, // ZOMBB-B-BIES
 	/client/proc/cmd_admin_add_freeform_ai_law,
 	/client/proc/cmd_admin_add_random_ai_law,
@@ -132,7 +133,6 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/toggleaban,
 	/client/proc/toggle_log_hrefs,
 	/datum/admins/proc/immreboot,
-	/datum/admins/verb/update_playlist,
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
