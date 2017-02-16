@@ -311,7 +311,6 @@
 #define CHARCOAL		"charcoal"
 #define SANGRIA			"sangria"
 #define BLOCKIZINE		"blockizine"
-#define FISHBLEACH		"fishbleach"
 
 #define TUNGSTEN 			"tungsten"
 #define LITHIUMSODIUMTUNGSTATE 			"lithiumsodiumtungstate"

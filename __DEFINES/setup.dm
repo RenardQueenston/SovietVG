@@ -606,7 +606,7 @@ var/list/global_mutations = list() // list of hidden mutation things
 
 
 //Damage things	//TODO: merge these down to reduce on defines
-//Way to waste perfectly good damagetype names (BRUTE) on this... If you were really worried about case sensitivity, you could have just used lowertext_alt(damagetype) in the proc...
+//Way to waste perfectly good damagetype names (BRUTE) on this... If you were really worried about case sensitivity, you could have just used lowertext(damagetype) in the proc...
 #define BRUTE		"brute"
 #define BURN		"fire"
 #define TOX			"tox"
@@ -1414,33 +1414,33 @@ var/proccalls = 1
 #define WARNING(MSG) world.log << "##WARNING: [MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr]."
 #define warning(msg) world.log << "## WARNING: [msg]"
 #define testing(msg) world.log << "## TESTING: [msg]"
-#define log_game(text) diary << lhtml_decode("\[[time_stamp()]]GAME: [text]")
+#define log_game(text) diary << html_decode("\[[time_stamp()]]GAME: [text]")
 
-#define log_vote(text) diary << lhtml_decode("\[[time_stamp()]]VOTE: [text]")
+#define log_vote(text) diary << html_decode("\[[time_stamp()]]VOTE: [text]")
 
-#define log_access(text) diary << lhtml_decode("\[[time_stamp()]]ACCESS: [text]")
+#define log_access(text) diary << html_decode("\[[time_stamp()]]ACCESS: [text]")
 
-#define log_say(text) diary << lhtml_decode("\[[time_stamp()]]SAY: [text]")
+#define log_say(text) diary << html_decode("\[[time_stamp()]]SAY: [text]")
 
-#define log_ooc(text) diary << lhtml_decode("\[[time_stamp()]]OOC: [text]")
+#define log_ooc(text) diary << html_decode("\[[time_stamp()]]OOC: [text]")
 
-#define log_whisper(text) diary << lhtml_decode("\[[time_stamp()]]WHISPER: [text]")
+#define log_whisper(text) diary << html_decode("\[[time_stamp()]]WHISPER: [text]")
 
-#define log_cultspeak(text) diary << lhtml_decode("\[[time_stamp()]]CULT: [text]")
+#define log_cultspeak(text) diary << html_decode("\[[time_stamp()]]CULT: [text]")
 
-#define log_narspeak(text) diary << lhtml_decode("\[[time_stamp()]]NARSIE: [text]")
+#define log_narspeak(text) diary << html_decode("\[[time_stamp()]]NARSIE: [text]")
 
-#define log_emote(text) diary << lhtml_decode("\[[time_stamp()]]EMOTE: [text]")
+#define log_emote(text) diary << html_decode("\[[time_stamp()]]EMOTE: [text]")
 
-#define log_attack(text) diaryofmeanpeople << lhtml_decode("\[[time_stamp()]]ATTACK: [text]")
+#define log_attack(text) diaryofmeanpeople << html_decode("\[[time_stamp()]]ATTACK: [text]")
 
-#define log_adminsay(text) diary << lhtml_decode("\[[time_stamp()]]ADMINSAY: [text]")
+#define log_adminsay(text) diary << html_decode("\[[time_stamp()]]ADMINSAY: [text]")
 
-#define log_adminwarn(text) diary << lhtml_decode("\[[time_stamp()]]ADMINWARN: [text]")
-#define log_pda(text) diary << lhtml_decode("\[[time_stamp()]]PDA: [text]")
+#define log_adminwarn(text) diary << html_decode("\[[time_stamp()]]ADMINWARN: [text]")
+#define log_pda(text) diary << html_decode("\[[time_stamp()]]PDA: [text]")
 
-#define log_blobspeak(text) diary << lhtml_decode("\[[time_stamp()]]BLOB: [text]")
-#define log_blobtelepathy(text) diary << lhtml_decode("\[[time_stamp()]]BLOBTELE: [text]")
+#define log_blobspeak(text) diary << html_decode("\[[time_stamp()]]BLOB: [text]")
+#define log_blobtelepathy(text) diary << html_decode("\[[time_stamp()]]BLOBTELE: [text]")
 
 //OOC isbanned
 #define oocban_isbanned(key) oocban_keylist.Find("[ckey(key)]")

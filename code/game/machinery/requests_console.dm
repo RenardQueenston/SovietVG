@@ -245,7 +245,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	if(reject_bad_text(href_list["write"]))
 		dpt = ckey(href_list["write"]) //write contains the string of the receiving department's name
 
-		var/new_message = copytext(lhtml_encode(input(usr, "Write your message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
+		var/new_message = copytext(reject_bad_text(input(usr, "Write your message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
 		if(new_message)
 			message = new_message
 			screen = 9
@@ -262,7 +262,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 			priority = -1
 
 	if(href_list["writeAnnouncement"])
-		var/new_message = copytext(lhtml_encode(input(usr, "Write your message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
+		var/new_message = copytext(reject_bad_text(input(usr, "Write your message:", "Awaiting Input", "")),1,MAX_MESSAGE_LEN)
 		if(new_message)
 			message = new_message
 			switch(href_list["priority"])
@@ -392,7 +392,7 @@ var/list/obj/machinery/requests_console/allConsoles = list()
 	switch( href_list["setDepartment"] )
 		if(null)	//skip
 		else
-			var/name = lhtml_encode(input(usr,"Name:","Name this department.","Public") as null|text)
+			var/name = reject_bad_text(input(usr,"Name:","Name this department.","Public") as null|text)
 			set_department(name,text2num(href_list["setDepartment"]))
 
 	updateUsrDialog()

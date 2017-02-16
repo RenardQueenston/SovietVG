@@ -377,7 +377,7 @@ body
 		html += "[name] = <span class='value'>null</span>"
 
 	else if (istext(value))
-		html += "[name] = <span class='value'>\"[lhtml_encode(value)]\"</span>"
+		html += "[name] = <span class='value'>\"[html_encode(value)]\"</span>"
 
 	else if (isicon(value))
 		#ifdef VARSICON
@@ -756,7 +756,7 @@ body
 					for(var/mob/M in range(T,7))
 						shake_camera(M, 4, 1)
 				if(flashy_level > 2)
-					to_chat(world, "<font size='15' color='red'><b>[uppertext_alt(A.name)] HAS RISEN</b></font>")
+					to_chat(world, "<font size='15' color='red'><b>[uppertext(A.name)] HAS RISEN</b></font>")
 			if("Stealthy")
 				A.alpha = 0
 				animate(A, alpha = 255, time = stealthy_level)

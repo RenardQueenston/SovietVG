@@ -69,7 +69,7 @@
 	return log(X, Y)
 
 /proc/_lowertext(T)
-	return lowertext_alt(T)
+	return lowertext(T)
 
 /proc/_matrix(a, b, c, d, e, f)
 	return matrix(a, b, c, d, e, f)

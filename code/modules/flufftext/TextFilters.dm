@@ -1,7 +1,7 @@
 
 
 proc/Intoxicated(phrase)
-	phrase = lhtml_decode(phrase)
+	phrase = html_decode(phrase)
 	var/leng=length(phrase)
 	var/counter=length(phrase)
 	var/newphrase=""
@@ -9,19 +9,19 @@ proc/Intoxicated(phrase)
 	while(counter>=1)
 		newletter=copytext(phrase,(leng-counter)+1,(leng-counter)+2)
 		if(rand(1,3)==3)
-			if(lowertext_alt(newletter)=="o")
+			if(lowertext(newletter)=="o")
 				newletter="u"
-			if(lowertext_alt(newletter)=="s")
+			if(lowertext(newletter)=="s")
 				newletter="ch"
-			if(lowertext_alt(newletter)=="a")
+			if(lowertext(newletter)=="a")
 				newletter="ah"
-			if(lowertext_alt(newletter)=="c")
+			if(lowertext(newletter)=="c")
 				newletter="k"
 		switch(rand(1,7))
 			if(1,3,5,8)
-				newletter="[lowertext_alt(newletter)]"
+				newletter="[lowertext(newletter)]"
 			if(2,4,6,15)
-				newletter="[uppertext_alt(newletter)]"
+				newletter="[uppertext(newletter)]"
 			if(7)
 				newletter+="'"
 			//if(9,10)	newletter="<b>[newletter]</b>"
@@ -31,7 +31,7 @@ proc/Intoxicated(phrase)
 	return newphrase
 
 proc/NewStutter(phrase,stunned)
-	phrase = lhtml_decode(phrase)
+	phrase = html_decode(phrase)
 
 	var/list/split_phrase = splittext(phrase," ") //Split it up into words.
 
@@ -50,7 +50,7 @@ proc/NewStutter(phrase,stunned)
 		//Search for dipthongs (two letters that make one sound.)
 		var/first_sound = copytext(word,1,3)
 		var/first_letter = copytext(word,1,2)
-		if(lowertext_alt(first_sound) in list("ch","th","sh"))
+		if(lowertext(first_sound) in list("ch","th","sh"))
 			first_letter = first_sound
 
 		//Repeat the first letter to create a stutter.

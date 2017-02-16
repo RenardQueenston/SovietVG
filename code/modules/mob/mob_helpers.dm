@@ -261,19 +261,19 @@ proc/slur(phrase)
 	while(counter>=1)
 		newletter=copytext(phrase,(leng-counter)+1,(leng-counter)+2)
 		if(rand(1,3)==3)
-			if(lowertext_alt(newletter)=="o")
+			if(lowertext(newletter)=="o")
 				newletter="u"
-			if(lowertext_alt(newletter)=="s")
+			if(lowertext(newletter)=="s")
 				newletter="ch"
-			if(lowertext_alt(newletter)=="a")
+			if(lowertext(newletter)=="a")
 				newletter="ah"
-			if(lowertext_alt(newletter)=="c")
+			if(lowertext(newletter)=="c")
 				newletter="k"
 		switch(rand(1,15))
 			if(1,3,5,8)
-				newletter="[lowertext_alt(newletter)]"
+				newletter="[lowertext(newletter)]"
 			if(2,4,6,15)
-				newletter="[uppertext_alt(newletter)]"
+				newletter="[uppertext(newletter)]"
 			if(7)
 				newletter+="'"
 			//if(9,10)	newletter="<b>[newletter]</b>"
@@ -334,7 +334,7 @@ proc/Gibberish(t, p)//t is the inputted message, and any value higher than 70 fo
 	message = replacetext(message, "carp", "crap")
 	message = replacetext(message, "reason", "raisin")
 	if(prob(50))
-		message = uppertext_alt(message)
+		message = uppertext(message)
 		message += "[stutter(pick("!", "!!", "!!!"))]"
 	if(!stuttering && prob(15))
 		message = stutter(message)

@@ -230,9 +230,9 @@ var/global/floorIsLava = 0
 		else
 			f = 0
 		if(L in M.languages)
-			body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[lhtml_encode(k)]' style='color:#006600'>[k]</a>"
+			body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(k)]' style='color:#006600'>[k]</a>"
 		else
-			body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[lhtml_encode(k)]' style='color:#ff0000'>[k]</a>"
+			body += "<a href='?src=\ref[src];toglang=\ref[M];lang=[html_encode(k)]' style='color:#ff0000'>[k]</a>"
 
 	body += {"<br>
 		</body></html>
@@ -289,7 +289,7 @@ var/global/floorIsLava = 0
 		to_chat(usr, "Error: you are not an admin!")
 		return
 	checkSessionKey()
-	var/ckey = lowertext_alt(input("Type player ckey", "ckey", null) as text | null)
+	var/ckey = lowertext(input("Type player ckey", "ckey", null) as text | null)
 	usr << link(getVGPanel("rapsheet", admin = 1, query = list("ckey" = ckey)))
 //	usr << link("[config.vgws_base_url]/index.php/rapsheet/?s=[sessKey]&ckey=[ckey]")
 	return

@@ -79,6 +79,6 @@
 	if(!invocation_area || !chosenarea)
 		..()
 	else
-		invocation += "[uppertext_alt(chosenarea.name)]"
+		invocation += "[uppertext(chosenarea.name)]"
 		..()
 	return
