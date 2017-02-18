@@ -177,7 +177,7 @@ var/const/MAX_SAVE_SLOTS = 8
 
 	// jukebox volume
 	var/volume = 100
-	var/usewmp = 0 //whether to use WMP or VLC
+	var/usewmp = 1 //whether to use WMP or VLC
 
 	var/list/roles=list() // "role" => ROLEPREF_*
 
