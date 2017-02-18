@@ -65,7 +65,7 @@ var/list/role_wiki=list(
 	ROLE_WIZARD		= "Wizard",
 )
 
-var/const/MAX_SAVE_SLOTS = 8
+var/const/MAX_SAVE_SLOTS = 15
 
 //used for alternate_option
 #define GET_RANDOM_JOB 0
