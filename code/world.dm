@@ -359,14 +359,8 @@ var/savefile/panicfile
 
 	if (config && config.server_name)
 		s += "<b>[config.server_name]</b> &#8212; "
+	s += {"<b>[station_name()]</b>"(<a href=\"https://sovietstation.ru">Welcome to Soviet Station 13</a>)"}
 
-
-	s += {"<b>[station_name()]</b>"
-		(
-		<a href=\"https://sovietstation.ru">"
-		Welcome to Soviet Station 13"
-		</a>
-		)"}
 	var/list/features = list()
 
 	if(ticker)
