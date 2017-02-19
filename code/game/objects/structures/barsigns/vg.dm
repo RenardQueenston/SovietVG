@@ -77,3 +77,18 @@
 	name = "Honking Clown"
 	icon = "clown"
 	desc = "Bananas not included."
+
+/datum/barsign/vg/clown
+	name = "Honking Clown"
+	icon = "clown"
+	desc = "Bananas not included."
+
+
+
+
+
+
+
+
+
+
