@@ -52,6 +52,66 @@
 
 	icon = 'icons/mob/human_face.dmi'	  // default icon for all hairs
 
+
+/*
+///////////////////////////////////
+/  =---------------------------=  /
+/  == Bay12Soviet Hair Styles ==  /
+/  =---------------------------=  /
+///////////////////////////////////
+*/
+
+	longtails
+		name = "Long Tails"
+		icon_state = "hair_long_d_tails"
+
+	longbedhead
+		name = "Long bedhead"
+		icon_state = "hair_long_bedhead"
+
+	flutterhair
+		name = "Flutter Hair"
+		icon_state = "hair_fluttershy"
+
+	judge
+		name = "Judge"
+		icon_state = "hair_judge"
+
+	pigtails
+		name = "Pigtails"
+		icon_state = "hair_pigtails"
+
+	applevodka
+		name = "Applejack"
+		icon_state = "hair_applejack"
+
+	emolong
+		name = "Emo Long"
+		icon_state = "hair_emolong"
+
+	cidoji
+		name = "Ci Do Ji"
+		icon_state = "hair_rows2"
+
+	bdoublebun
+		name = "Double Bun"
+		icon_state = "hair_doublebun"
+
+	ponytail4
+		name = "Ponytail 4"
+		icon_state = "hair_ponytail4"
+
+	beehive2
+		name = "Beehive 2"
+		icon_state = "hair_beehive2"
+
+/*
+///////////////////////////////////
+/  =---------------------------=  /
+/  == VG current hair styles  ==  /
+/  =---------------------------=  /
+///////////////////////////////////
+*/
 	bald
 		name = "Bald"
 		icon_state = "bald"
@@ -289,12 +349,12 @@
 		icon_state = "hair_braid"
 		gender = FEMALE
 		flags = HAIRSTYLE_CANTRIP
-	
+
 	kanade
 		name = "Kanade"
 		icon_state = "hair_kanade"
 		gender = FEMALE
-		
+
 	odango
 		name = "Odango"
 		icon_state = "hair_odango"
