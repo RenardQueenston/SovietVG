@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS `erro_admin` (
   `level` int(2) NOT NULL DEFAULT '0',
   `flags` int(16) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;"}
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `erro_admin_log` (
   `adminip` varchar(18) NOT NULL,
   `log` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;"}
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `erro_ban` (
   `unbanned_computerid` varchar(32) DEFAULT NULL,
   `unbanned_ip` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;"}
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `erro_feedback` (
   `var_value` int(16) DEFAULT NULL,
   `details` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1;"}
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `erro_player` (
   `lastadminrank` varchar(32) NOT NULL DEFAULT 'Player',
   PRIMARY KEY (`id`),
   UNIQUE KEY `ckey` (`ckey`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;"}
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `erro_poll_option` (
   `descmid` varchar(32) DEFAULT NULL,
   `descmax` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;"}
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -110,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `erro_poll_question` (
   `question` varchar(255) NOT NULL,
   `adminonly` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;"}
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `erro_poll_textreply` (
   `replytext` text NOT NULL,
   `adminrank` varchar(32) NOT NULL DEFAULT 'Player',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;"}
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `erro_poll_vote` (
   `adminrank` varchar(32) NOT NULL,
   `rating` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;"}
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `erro_privacy` (
   `ckey` varchar(32) NOT NULL,
   `option` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1;"}
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -173,7 +173,7 @@ CREATE  TABLE IF NOT EXISTS `death` (
   `oxyloss` INT(11) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;"}
+DEFAULT CHARACTER SET = utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -191,7 +191,7 @@ CREATE  TABLE IF NOT EXISTS `karma` (
   `time` DATETIME NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;"}
+DEFAULT CHARACTER SET = utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -202,7 +202,7 @@ CREATE  TABLE IF NOT EXISTS `karmatotals` (
   `karma` INT(11) NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;"}
+DEFAULT CHARACTER SET = utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -215,7 +215,7 @@ CREATE  TABLE IF NOT EXISTS `library` (
   `category` TEXT NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;"}
+DEFAULT CHARACTER SET = utf8;"}
 	if(!execute(sql))
 		return FALSE
 
@@ -227,5 +227,5 @@ CREATE  TABLE IF NOT EXISTS `population` (
   `time` DATETIME NOT NULL ,
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
-DEFAULT CHARACTER SET = latin1;"}
+DEFAULT CHARACTER SET = utf8;"}
 	return execute(sql)

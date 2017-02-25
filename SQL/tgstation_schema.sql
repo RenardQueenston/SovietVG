@@ -2,13 +2,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
-CREATE SCHEMA IF NOT EXISTS `tgstation` DEFAULT CHARACTER SET latin1 ;
+CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+CREATE SCHEMA IF NOT EXISTS `spacestation13` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
 USE `mydb` ;
-USE `tgstation` ;
+USE `spacestation13` ;
 
 -- -----------------------------------------------------
--- Table `tgstation`.`death`
+-- Table `spacestation13`.`death`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `tgstation`.`death` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
@@ -29,11 +29,11 @@ CREATE  TABLE IF NOT EXISTS `tgstation`.`death` (
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
 AUTO_INCREMENT = 3409
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `tgstation`.`karma`
+-- Table `spacestation13`.`karma`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `tgstation`.`karma` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
@@ -49,11 +49,11 @@ CREATE  TABLE IF NOT EXISTS `tgstation`.`karma` (
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
 AUTO_INCREMENT = 943
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `tgstation`.`karmatotals`
+-- Table `spacestation13`.`karmatotals`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `tgstation`.`karmatotals` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
@@ -62,11 +62,11 @@ CREATE  TABLE IF NOT EXISTS `tgstation`.`karmatotals` (
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
 AUTO_INCREMENT = 244
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `tgstation`.`library`
+-- Table `spacestation13`.`library`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `tgstation`.`library` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
@@ -77,11 +77,11 @@ CREATE  TABLE IF NOT EXISTS `tgstation`.`library` (
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
 AUTO_INCREMENT = 184
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 -- -----------------------------------------------------
--- Table `tgstation`.`population`
+-- Table `spacestation13`.`population`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `tgstation`.`population` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
@@ -91,7 +91,7 @@ CREATE  TABLE IF NOT EXISTS `tgstation`.`population` (
   PRIMARY KEY (`id`) )
 ENGINE = MyISAM
 AUTO_INCREMENT = 2544
-DEFAULT CHARACTER SET = latin1;
+DEFAULT CHARACTER SET = utf8;
 
 
 
