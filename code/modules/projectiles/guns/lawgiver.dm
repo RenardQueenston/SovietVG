@@ -5,7 +5,7 @@
 #define LASER "laser"
 
 /obj/item/weapon/gun/lawgiver
-	desc = "The Lawgiver II. A twenty-five round sidearm with mission-variable voice-programmed ammunition."
+	desc = "The Lawgiver II. A twenty-five round sidearm with mission-variable voice-programmed ammunition. STUN, LASER, RAPID, FLARE and RICOCHET"
 	name = "lawgiver"
 	icon_state = "lawgiver"
 	item_state = "lawgiver"
