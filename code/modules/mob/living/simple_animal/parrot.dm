@@ -36,7 +36,7 @@
 	pass_flags = PASSTABLE
 	flags = HEAR | PROXMOVE | HEAR_ALWAYS
 
-	speak = list("Hi","Hello!","Cracker?","BAWWWWK george mellons griffing me")
+	speak = list("Привет","Привет!","Крекер?","BAWWWWK George Mellons убивает меня!")
 	speak_emote = list("squawks","says","yells")
 	emote_hear = list("squawks","bawks")
 	emote_see = list("flutters its wings")
