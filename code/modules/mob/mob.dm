@@ -72,6 +72,9 @@
 	if(transmogged_from)
 		qdel(transmogged_from)
 		transmogged_from = null
+	if(transmogged_to)
+		qdel(transmogged_to)
+		transmogged_to = null
 
 	..()
 
@@ -219,13 +222,6 @@
 		if(client)
 			client.screen -= zone_sel
 		zone_sel = null
-	if(hud_used)
-		for(var/obj/screen/item_action/actionitem in hud_used.item_action_list)
-			if(client)
-				client.screen -= actionitem
-				client.images -= actionitem.overlay
-			returnToPool(actionitem)
-			hud_used.item_action_list -= actionitem
 
 /mob/proc/cultify()
 	return
@@ -1279,6 +1275,18 @@ var/list/slot_equipment_priority = list( \
 			var/mob/living/carbon/human/H = M
 			H.handle_regular_hud_updates()
 
+// http://www.byond.com/forum/?post=2219001#comment22205313
+// TODO: Clean up and identify the args, document
+/mob/verb/DisableClick(argu = null as anything, sec = "" as text, number1 = 0 as num, number2 = 0 as num)
+	set name = ".click"
+	set category = null
+	return
+
+/mob/verb/DisableDblClick(argu = null as anything, sec = "" as text, number1 = 0 as num, number2 = 0 as num)
+	set name = ".dblclick"
+	set category = null
+	return
+
 /mob/Topic(href,href_list[])
 	if(href_list["mach_close"])
 		var/t1 = text("window=[href_list["mach_close"]]")
@@ -1851,24 +1859,41 @@ mob/proc/on_foot()
 				var/mob/living/carbon/C = transmogged_from
 				if(istype(C.get_item_by_slot(slot_wear_mask), /obj/item/clothing/mask/morphing))
 					C.drop_item(C.wear_mask, force_drop = 1)
+			var/mob/returned_mob = transmogged_from
+			returned_mob.transmogged_to = null
 			transmogged_from = null
 			for(var/atom/movable/AM in contents)
 				AM.forceMove(get_turf(src))
 			forceMove(null)
 			qdel(src)
+			return returned_mob
 		return
 	if(!ispath(target_type, /mob))
 		EXCEPTION(target_type)
 		return
 	var/mob/M = new target_type(loc)
 	M.transmogged_from = src
+	transmogged_to = M
 	if(key)
 		M.key = key
 	if(offer_revert_spell)
 		var/spell/change_back = new /spell/aoe_turf/revert_form
 		M.add_spell(change_back)
+	var/static/list/drop_on_transmog = list(
+		/obj/item/weapon/disk/nuclear,
+		/obj/item/weapon/holder,
+		/obj/item/device/paicard,
+		/obj/item/device/soulstone,
+		/obj/item/device/mmi,
+		)
+	for(var/i in drop_on_transmog)
+		var/list/L = search_contents_for(i)
+		if(L.len)
+			for(var/A in L)
+				drop_item(A, force_drop = 1)
 	src.forceMove(null)
 	timestopped = 1
+	return M
 
 /spell/aoe_turf/revert_form
 	name = "Revert Form"
