@@ -143,3 +143,50 @@
 	icon_state="bsposter29"
 	name = "Winter Is Coming"
 	desc = "On the poster is a frighteningly large wolf, he warns: \"Only YOU can keep the station from freezing during planetary occultation!\""
+
+/datum/poster/bay_30
+	icon_state="bsposter30"
+	name = "Barsik"
+	desc = "Barsik is watching you!"
+
+/datum/poster/bay_31
+	icon_state="bsposter31"
+	name = "Rorschach"
+	desc = "The End Is Nigh!"
+
+
+/datum/poster/lego3
+	icon_state="legoposter3"
+	name = "Gang Bang"
+	desc = "Choose your destiny."
+
+
+/datum/poster/lego4
+	icon_state="legoposter4"
+	name = "Soap"
+	desc = "Oh no, I dropped the soap!"
+
+/datum/poster/lego5
+	icon_state="legoposter5"
+	name = "Into HELL"
+	desc = "Right to the fucking Hell!"
+
+/datum/poster/lego6
+	icon_state="legoposter6"
+	name = "Russians versus Aliens"
+	desc = "Final battle for humanity in new film \"Russians versus Aliens: Resurrection\"."
+
+/datum/poster/lego7
+	icon_state="legoposter7"
+	name = "U.A.C."
+	desc = "U.A.C. promise not to experiment with telescience, during which there is a portal to hell with the bloodthirsty demons."
+
+/datum/poster/lego8
+	icon_state="legoposter8"
+	name = "Night Watch"
+	desc = "All vampires will die!"
+
+/datum/poster/lego9
+	icon_state="legoposter9"
+	name = "DooM"
+	desc = "New game DooM 13 avaible now in \"PDA Store\"!"

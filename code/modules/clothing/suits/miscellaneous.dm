@@ -221,10 +221,12 @@
 	flags = FPRINT
 
 /obj/item/clothing/suit/neocoat
-	name = "black coat"
-	desc = "A flowing, black coat."
+	name = "Franky's coat"
+	desc = "A flowing, black coat. Smells like burning paper."
 	icon_state = "neocoat"//broken completely
 	flags = FPRINT
+	body_parts_covered = ARMS|LEGS|FULL_TORSO|IGNORE_INV
+	armor = list(melee = 65, bullet = 30, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
 
 //actual suits
 
