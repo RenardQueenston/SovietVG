@@ -12,6 +12,26 @@
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 10)
 	species_fit = list(VOX_SHAPED, GREY_SHAPED)
 
+/obj/item/clothing/suit/storage/hazardvestg
+	name = "hazard paramedic vest"
+	desc = "A high-visibility vest used in danger zone."
+	icon_state = "hazard_g"
+	item_state = "hazard_g"
+	allowed = list(/obj/item/device/analyzer,/obj/item/stack/medical,/obj/item/weapon/dnainjector,/obj/item/weapon/reagent_containers/dropper,/obj/item/weapon/reagent_containers/syringe,/obj/item/weapon/reagent_containers/hypospray,/obj/item/device/healthanalyzer,/obj/item/device/flashlight/pen,/obj/item/weapon/tank/emergency_oxygen,/obj/item/weapon/tank/emergency_nitrogen,/obj/item/device/radio,/obj/item/device/gps)
+	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 10)
+	species_fit = list(VOX_SHAPED, GREY_SHAPED)
+
+//Chemistry
+/obj/item/clothing/suit/storage/hazardvestw
+	name = "chemist vest"
+	desc = "A hazard vest used to contain bottles."
+	icon_state = "hazard_w"
+	item_state = "hazard_w"
+	allowed = list(/obj/item/device/analyzer,/obj/item/stack/medical,/obj/item/weapon/dnainjector,/obj/item/weapon/reagent_containers/dropper,/obj/item/weapon/reagent_containers/syringe,/obj/item/weapon/reagent_containers/hypospray,/obj/item/device/healthanalyzer,/obj/item/device/flashlight/pen,/obj/item/weapon/tank/emergency_oxygen,/obj/item/weapon/tank/emergency_nitrogen,/obj/item/device/radio,/obj/item/device/gps)
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 10)
+	species_fit = list(VOX_SHAPED, GREY_SHAPED)
+
+
 //Botonist
 /obj/item/clothing/suit/apron
 	name = "apron"
