@@ -14,8 +14,15 @@
 	item_state = "w_suit"
 	species_fit = list(GREY_SHAPED)
 
-/obj/item/clothing/under/captain_fly
+/obj/item/clothing/under/captain_parade
 	name = "rogue captains uniform"
+	desc = "Maded from natural fiber and gold."
+	icon_state = "captain_parade_s"
+	item_state = "captain_parade_s"
+	_color = "captain_parade_s"
+
+/obj/item/clothing/under/captain_fly
+	name = "parade captain uniform"
 	desc = "For the man who doesn't care because he's still free."
 	icon_state = "captain_fly"
 	item_state = "captain_fly"
