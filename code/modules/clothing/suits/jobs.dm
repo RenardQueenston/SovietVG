@@ -52,6 +52,13 @@
 	body_parts_covered = FULL_TORSO|LEGS|FEET|ARMS
 	species_fit = list(VOX_SHAPED)
 
+/obj/item/clothing/suit/capformal
+	name = "captain's formal tunic"
+	desc = "Maded from natural fiber and gold."
+	icon_state = "capformal"
+	item_state = "capformal"
+	species_fit = list(VOX_SHAPED)
+
 /obj/item/clothing/suit/storage/capjacket
 	name = "captain's uniform jacket"
 	desc = "A less formal jacket for everyday captain use."
@@ -220,6 +227,15 @@
 				src.icon_state = "fr_jacket_open"
 				to_chat(usr, "You unbutton the jacket.")
 		usr.update_inv_wear_suit()	//so our overlays update
+
+/obj/item/clothing/suit/storage/white_jacket
+	name = "white jacket"
+	desc = "Help you with cold.."
+	icon_state = "white_jacket"
+	item_state = "white_jacket"
+	allowed = list(/obj/item/device/analyzer,/obj/item/stack/medical,/obj/item/weapon/dnainjector,/obj/item/weapon/reagent_containers/dropper,/obj/item/weapon/reagent_containers/syringe,/obj/item/weapon/reagent_containers/hypospray,/obj/item/device/healthanalyzer,/obj/item/device/flashlight/pen,/obj/item/weapon/tank/emergency_oxygen,/obj/item/weapon/tank/emergency_nitrogen,/obj/item/device/radio,/obj/item/device/gps)
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 10, rad = 10)
+	species_fit = list(VOX_SHAPED, GREY_SHAPED)
 
 //Mime
 /obj/item/clothing/suit/suspenders
