@@ -129,16 +129,16 @@
 	return
 
 /obj/machinery/computer/arcade/proc/action_attack()
-			src.blocked = 1
-			var/attackamt = rand(2,6)
-			src.temp = "You attack for [attackamt] damage!"
-			src.updateUsrDialog()
-			if(turtle > 0)
-				turtle--
+	src.blocked = 1
+	var/attackamt = rand(2,6)
+	src.temp = "You attack for [attackamt] damage!"
+	src.updateUsrDialog()
+	if(turtle > 0)
+		turtle--
 
-			sleep(10)
-			src.enemy_hp -= attackamt
-			src.arcade_action()
+	sleep(10)
+	src.enemy_hp -= attackamt
+	src.arcade_action()
 
 /obj/machinery/computer/arcade/proc/action_heal()
 			src.blocked = 1
@@ -156,16 +156,16 @@
 			src.arcade_action()
 
 /obj/machinery/computer/arcade/proc/action_charge()
-			src.blocked = 1
-			var/chargeamt = rand(4,7)
-			src.temp = "You regain [chargeamt] points"
-			src.player_mp += chargeamt
-			if(turtle > 0)
-				turtle--
+	src.blocked = 1
+	var/chargeamt = rand(4,7)
+	src.temp = "You regain [chargeamt] points"
+	src.player_mp += chargeamt
+	if(turtle > 0)
+		turtle--
 
-			src.updateUsrDialog()
-			sleep(10)
-			src.arcade_action()
+	src.updateUsrDialog()
+	sleep(10)
+	src.arcade_action()
 
 /obj/machinery/computer/arcade/Topic(href, href_list)
 	if(..())

@@ -314,6 +314,7 @@
 #define CHARCOAL		"charcoal"
 #define SANGRIA			"sangria"
 #define BLOCKIZINE		"blockizine"
+#define FISHBLEACH		"fishbleach"
 #define CHEESYGLOOP		"cheesy_gloop"
 #define MAPLESYRUP		"maple_syrup"
 
