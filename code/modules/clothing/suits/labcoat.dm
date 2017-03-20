@@ -47,6 +47,13 @@
 	item_state = "labcoat_cmo"
 	species_fit = list(VOX_SHAPED, GREY_SHAPED)
 
+/obj/item/clothing/suit/storage/labcoat/cmo_white
+	name = "chief medical officer's white labcoat"
+	desc = "Whiter than the standard model."
+	base_icon_state = "labcoat_cmo_w"
+	item_state = "labcoat_cmo_w"
+	species_fit = list(VOX_SHAPED, GREY_SHAPED)
+
 /obj/item/clothing/suit/storage/labcoat/mad
 	name = "The Mad's labcoat"
 	desc = "It makes you look capable of konking someone on the noggin and shooting them into space."
