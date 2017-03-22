@@ -57,6 +57,7 @@
 	desc = "Maded from natural fiber and gold."
 	icon_state = "capformal"
 	item_state = "capformal"
+	body_parts_covered = FULL_TORSO|ARMS
 	species_fit = list(VOX_SHAPED)
 
 /obj/item/clothing/suit/storage/capjacket
