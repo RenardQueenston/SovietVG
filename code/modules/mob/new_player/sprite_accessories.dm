@@ -105,6 +105,11 @@
 		name = "Beehive 2"
 		icon_state = "hair_beehive2"
 
+	gentle
+		name = "Gentle"
+		icon_state = "hair_gentle"
+
+
 /*
 ///////////////////////////////////
 /  =---------------------------=  /
