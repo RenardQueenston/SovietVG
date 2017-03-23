@@ -300,6 +300,7 @@
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/suit/storage/labcoat/chemist(src)
 	new /obj/item/clothing/suit/storage/labcoat/chemist(src)
+	new /obj/item/clothing/suit/storage/hazardvestw(src)
 	AddToProfiler()
 	return
 

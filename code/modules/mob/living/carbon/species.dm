@@ -460,20 +460,6 @@ var/global/list/whitelisted_species = list("Human")
 	filter.addReplacement("god","gosh")
 	filter.addWordReplacement("(ass|butt)", "rump")
 
-/datum/species/tajaran/handle_speech(var/datum/speech/speech, mob/living/carbon/human/H)
-	if (prob(15))
-		speech.message = ""
-
-		if (prob(50))
-			speech.message = pick("GOD, PLEASE", "NO, GOD", "AGGGGGGGH") + " "
-
-		speech.message += pick("KILL ME", "END MY SUFFERING", "I CAN'T DO THIS ANYMORE")
-
-		return ..()
-
-	speech.message = filter.FilterSpeech(speech.message)
-	return ..()
-
 /datum/species/grey // /vg/
 	name = "Grey"
 	icobase = 'icons/mob/human_races/r_grey.dmi'
