@@ -88,7 +88,7 @@
 /obj/structure/proc/climb_structure(mob/user)
 	src.add_fingerprint(user)
 	to_chat(user,"<span class='warning'>You start climbing onto [src]...</span>")
-	visible_message("<span class='warning'>[user] starts climbing onto [src].</span>"")
+	visible_message("<span class='warning'>[user] starts climbing onto [src].</span>")
 	var/adjusted_climb_time = climb_time
 	if(user.restrained()) //climbing takes twice as long when restrained.
 		adjusted_climb_time *= 2
