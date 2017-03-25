@@ -31,6 +31,7 @@
 		new /obj/item/weapon/melee/telebaton(src)
 		new /obj/item/clothing/under/dress/dress_cap(src)
 		new /obj/item/device/gps/secure(src)
+		new /obj/item/clothing/suit/capformal(src)
 
 		return
 
