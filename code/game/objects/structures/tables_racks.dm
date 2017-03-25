@@ -11,6 +11,7 @@
 /*
  * Tables
  */
+
 /obj/structure/table
 	name = "table"
 	desc = "A square piece of metal standing on four metal legs. It cannot move."
@@ -20,6 +21,7 @@
 	anchored = 1.0
 	layer = TABLE_LAYER
 	throwpass = 1	//You can throw objects over this, despite it's density.")
+	climbable = TRUE
 	var/parts = /obj/item/weapon/table_parts
 	var/icon/clicked //Because BYOND can't give us runtime icon access, this is basically just a click catcher
 	var/flipped = 0
@@ -304,6 +306,8 @@
 			return 1
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return 1
+	if(locate(/obj/structure/table) in get_turf(mover)) //to walk on tables
+		return 1
 	if(flipped)
 		if(get_dir(loc, target) == dir || get_dir(loc, mover) == dir)
 			return !density
@@ -354,7 +358,10 @@
 			return !density
 	return 1
 
-/obj/structure/table/MouseDrop_T(obj/O as obj, mob/user as mob)
+/obj/structure/table/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
+	if (ismob(O))
+		..()
+		return //does we need it here?
 	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
 		return
 	if(user.drop_item())
@@ -625,6 +632,7 @@
 	icon_state = "glass_table"
 	parts = /obj/item/weapon/table_parts/glass
 	health = 30
+	climb_stun = 3.5 //falldawn from broken table - pretty shietty and painfull
 
 /obj/structure/table/glass/attackby(obj/item/W as obj, mob/user as mob, params)
 	if (istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
@@ -679,6 +687,7 @@
 	flags = FPRINT
 	anchored = 1.0
 	throwpass = 1	//You can throw objects over this, despite its density.
+	climbable = TRUE
 	var/parts = /obj/item/weapon/rack_parts
 	var/offset_step = 0
 	var/health = 20
@@ -742,6 +751,8 @@
 	destroy()
 
 /obj/structure/rack/MouseDrop_T(obj/O as obj, mob/user as mob)
+	if (ismob(O))
+		..()
 	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
 		return
 	if(user.drop_item(O))

@@ -1,13 +1,17 @@
-obj/structure
+/obj/structure
 	icon = 'icons/obj/structures.dmi'
 	penetration_dampening = 5
+	var/climb_time = 20
+	var/climb_stun = 2
+	var/climbable = FALSE
+	var/mob/structureclimber
 
-obj/structure/blob_act(var/destroy = 0)
+/obj/structure/blob_act(var/destroy = 0)
 	..()
 	if(destroy || (prob(50)))
 		qdel(src)
 
-obj/structure/ex_act(severity)
+/obj/structure/ex_act(severity)
 	switch(severity)
 		if(1.0)
 			qdel(src)
@@ -43,6 +47,59 @@ obj/structure/ex_act(severity)
 					if(!Move(get_step(loc, kick_dir)))
 						break
 					sleep(3)
+
+//24.03.17
+//copied from TG's PR from 2014 ~~~sir DonBastardo
+//corrected - molesto441
+/obj/structure/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
+	. = ..()
+	if(isrobot(user))
+		return
+	if(!climbable)
+		to_chat(user,"<span class='warning'>You can't climb onto [src]!</span>")
+		return
+	if ( (! ( istype(O, /obj/item/weapon) ) || user.get_active_hand() != null ) ) //last two means user have item in hands
+		to_chat(user, "<span class='warning'>You should free your hands to clim'bawalls!.</span>") //replase visible_message anything that is better
+		return
+	if(ismob(O) && user == O && iscarbon(user))
+		if(user.canmove)
+			climb_structure(user)
+			return
+	if(!user.drop_item())
+		return
+	if (O.loc != src.loc)
+		step(O, get_dir(O, src))
+	return
+
+/obj/structure/proc/do_climb(mob/user)//changed from /atom/movable to /mob/user couse of first dosent have flying falue
+	if(climbable)
+		user.flying = 1
+		density = 0
+		. = step(user,get_dir(user,src.loc))//param in Cross will me Mob with flying
+		density = 1
+		user.flying = 0
+
+/obj/structure/proc/climb_structure(mob/user)
+	src.add_fingerprint(user)
+	to_chat(user,"<span class='warning'>You start climbing onto [src]...</span>")
+	visible_message("<span class='warning'>[user] starts climbing onto [src].</span>")
+	var/adjusted_climb_time = climb_time
+	if(user.restrained()) //climbing takes twice as long when restrained.
+		adjusted_climb_time *= 2
+	if(isalien(user))
+		adjusted_climb_time *= 0.25 //aliens are terrifyingly fast
+	structureclimber = user
+	if(do_mob(user, user, adjusted_climb_time))
+		if(src.loc) //Checking if structure has been destroyed
+			if(do_climb(user))
+				to_chat(user,"<span class='warning'>You climb onto [src].</span>")
+				visible_message("<span class='warning'>[user] climbs onto [src].</span>")
+				add_logs(user, src, "climbed onto")
+				user.Stun(climb_stun)
+				. = 1
+			else
+				to_chat(user, "<span class='warning'>You fail to climb onto [src].</span>")
+	structureclimber = null
 
 /obj/structure/animationBolt(var/mob/firer)
 	new /mob/living/simple_animal/hostile/mimic/copy(loc, src, firer, duration=SPELL_ANIMATION_TTL)
