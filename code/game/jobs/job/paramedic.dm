@@ -11,6 +11,8 @@
 	access = list(access_paramedic, access_medical, access_sec_doors, access_maint_tunnels, access_external_airlocks, access_eva)
 	minimal_access=list(access_paramedic, access_medical, access_sec_doors, access_maint_tunnels, access_external_airlocks, access_eva)
 
+	species_whitelist = list("Human", "Unathi", "Vox")
+
 	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/medical
 

@@ -75,6 +75,8 @@
 	minimal_access = list(access_weapons, access_security, access_sec_doors, access_brig, access_armory, access_court, access_maint_tunnels)
 	minimal_player_age = 7
 
+	species_whitelist = list("Human", "Unathi", "Vox")
+
 	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/warden
 
@@ -128,6 +130,8 @@
 	access = list(access_weapons, access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_court, access_eva)
 	minimal_access = list(access_weapons, access_security, access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_court)
 	alt_titles = list("Forensic Technician","Gumshoe")
+
+	species_whitelist = list("Human", "Unathi", "Vox")
 
 	minimal_player_age = 7
 
@@ -205,6 +209,8 @@
 	access = list(access_weapons, access_security, access_sec_doors, access_brig, access_court, access_maint_tunnels, access_morgue, access_eva)
 	minimal_access = list(access_weapons, access_security, access_sec_doors, access_brig, access_court, access_maint_tunnels)
 	minimal_player_age = 7
+
+	species_whitelist = list("Human", "Unathi", "Vox")
 
 	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/security

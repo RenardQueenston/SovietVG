@@ -19,6 +19,8 @@
 			            access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_ai_upload, access_mechanic)
 	minimal_player_age = 7
 
+	species_whitelist = list("Human")
+
 	pdaslot=slot_l_store
 	pdatype=/obj/item/device/pda/heads/ce
 
