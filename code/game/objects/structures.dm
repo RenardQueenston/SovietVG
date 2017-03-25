@@ -4,7 +4,6 @@
 	var/climb_time = 20
 	var/climb_stun = 2
 	var/climbable = FALSE
-	var/flying = 0//COSTILI ZAKAZIVALI? )))))
 	var/mob/structureclimber
 
 /obj/structure/blob_act(var/destroy = 0)
@@ -72,12 +71,7 @@
 		step(O, get_dir(O, src))
 	return
 
-//это говно(Cross) не позволяет мобу просто сделать step на стол, т.е. нужно или допиливать Cross или
-//допиливать do_climb/
-//решение - дать мобу flying на время выполнения Cross - наиболее оптимально.
-//так же, если вид костылей вам не нравится, step можно заменить на force_move, но это грозит заползанием на столы,
-//даже если они находятся в стене.
-/obj/structure/proc/do_climb(mob/user)
+/obj/structure/proc/do_climb(mob/user)//changed from /atom/movable to /mob/user couse of first dosent have flying falue
 	if(climbable)
 		user.flying = 1
 		density = 0
