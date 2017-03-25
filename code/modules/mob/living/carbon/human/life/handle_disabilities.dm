@@ -76,9 +76,6 @@
 				if(3)
 					emote("drool")
 
-	if(species.name == "Tajaran")
-		if(prob(1)) //Was 3
-			vomit(1) //Hairball
 
 	if(stat != DEAD)
 		var/rn = rand(0, 200) //This is fucking retarded, but I'm only doing sanitization, I don't have three months to spare to fix everything
