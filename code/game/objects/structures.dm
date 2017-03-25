@@ -58,13 +58,13 @@
 	if(!climbable)
 		to_chat(user,"<span class='warning'>You can't climb onto [src]!</span>")
 		return
-	if ( (! ( istype(O, /obj/item/weapon) ) || user.get_active_hand() != null ) ) //last two means user have item in hands
-		to_chat(user, "<span class='warning'>You should free your hands to clim'bawalls!.</span>") //replase visible_message anything that is better
-		return
 	if(ismob(O) && user == O && iscarbon(user))
 		if(user.canmove)
 			climb_structure(user)
 			return
+	if ( (! ( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O ) ) //last means user have any item in hands
+		to_chat(user, "<span class='warning'>You should free your hands to clim onto [src].</span>") //replase visible_message anything that is better
+		return
 	if(!user.drop_item())
 		return
 	if (O.loc != src.loc)
