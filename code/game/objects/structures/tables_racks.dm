@@ -361,12 +361,12 @@
 /obj/structure/table/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
 	if (ismob(O))
 		..()
-		return //does we need it here?
+/*		return //does we need it here?
 	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
 		return
 	if(user.drop_item())
 		if (O.loc != src.loc)
-			step(O, get_dir(O, src))
+			step(O, get_dir(O, src)*/
 	return
 
 
@@ -751,13 +751,17 @@
 	destroy()
 
 /obj/structure/rack/MouseDrop_T(obj/O as obj, mob/user as mob)
-	if (ismob(O))
-		..()
-	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
+/*	if (isrobot(user))
 		return
-	if(user.drop_item(O))
-		if (O.loc != src.loc)
-			step(O, get_dir(O, src))
+	if ( (!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O) ) //not some obj or not handling this obj
+		to_chat(user, "<span class='warning'>You should free your hands to climb somewhere!.</span>")
+		return
+	if(!user.drop_item())
+		return
+	if (O.loc != src.loc)
+		step(O, get_dir(O, src))*/
+	if(ismob(user))
+		..() //works anyway =/
 	return
 
 /obj/structure/rack/attackby(obj/item/weapon/W as obj, mob/user as mob)
