@@ -61,7 +61,7 @@
 	minimal_access = list(access_rnd, access_tox_storage, access_science, access_xenobiology)
 	alt_titles = list("Xenoarcheologist", "Anomalist", "Plasma Researcher", "Xenobiologist", "Research Botanist")
 
-	species_whitelist = list("Human", "Unathi", "Vox")
+	species_whitelist = list("Human", "Unathi", "Vox", "Skellington", "Grey", "Skeletal Vox", "Skrell")
 
 	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/toxins
@@ -119,7 +119,7 @@
 	minimal_access = list(access_robotics, access_tech_storage, access_morgue, access_science) //As a job that handles so many corpses, it makes sense for them to have morgue access.
 	alt_titles = list("Biomechanical Engineer","Mechatronic Engineer")
 
-	species_whitelist = list("Human", "Unathi", "Vox")
+	species_whitelist = list("Human", "Unathi", "Vox", "Skellington", "Grey", "Skeletal Vox", "Skrell")
 
 	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/roboticist
