@@ -53,26 +53,40 @@
 //corrected - molesto441
 /obj/structure/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
 	. = ..()
-	if(isrobot(user))
-		return
 	if(!climbable)
-		to_chat(user,"<span class='warning'>You can't climb onto [src]!</span>")
 		return
 	if(ismob(O) && user == O && iscarbon(user))
 		if(user.canmove)
 			climb_structure(user)
 			return
-	if ( (! ( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O ) ) //last means user have any item in hands
+	if ( istype(O, /obj/item/weapon) || user.get_active_hand() == O ) //last means user have any item in hands
+
+		if(user.drop_item(O))
+			if(O.loc != src.loc)
+				step(O, get_dir(O, src))
+	else
 		to_chat(user, "<span class='warning'>You should free your hands to clim onto [src].</span>") //replase visible_message anything that is better
 		return
-	if(!user.drop_item())
-		return
-	if (O.loc != src.loc)
-		step(O, get_dir(O, src))
 	return
 
+/obj/structure/proc/can_touch(mob/user)
+	if (!user)
+		return 0
+	if (isrobot(user))
+		to_chat(user, "<span class='notice'>You need hands for this.</span>")
+		return 0
+	if(!Adjacent(user))
+		return 0
+	if (user.locked_to || user.anchored) //dunno if it works
+		to_chat(user, "<span class='notice'>You need your hands and legs free for this.</span>")
+		return 0
+	if (user.stat || user.paralysis || user.sleeping || user.lying || user.incapacitated() )
+		to_chat(user, "<span class='notice'>You are too weak to do that.</span>")
+		return 0
+	return 1
+
 /obj/structure/proc/do_climb(mob/user)//changed from /atom/movable to /mob/user couse of first dosent have flying falue
-	if(climbable)
+	if(climbable && can_touch(user))
 		user.flying = 1
 		density = 0
 		. = step(user,get_dir(user,src.loc))//param in Cross will me Mob with flying
@@ -95,7 +109,7 @@
 				to_chat(user,"<span class='warning'>You climb onto [src].</span>")
 				visible_message("<span class='warning'>[user] climbs onto [src].</span>")
 				add_logs(user, src, "climbed onto")
-				user.Stun(climb_stun)
+				user.SetStunned(climb_stun)
 				. = 1
 			else
 				to_chat(user, "<span class='warning'>You fail to climb onto [src].</span>")
