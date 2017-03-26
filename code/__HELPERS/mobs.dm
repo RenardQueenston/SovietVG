@@ -49,7 +49,7 @@ proc/random_name(gender, speciesName = "Human")
 
 
 proc/random_skin_tone(species = "Human")
-	if(species != "Vox")
+	if(species == "Human")
 		switch(pick(60;"caucasian", 15;"afroamerican", 10;"african", 10;"latino", 5;"albino"))
 			if("caucasian")
 				. = -10
