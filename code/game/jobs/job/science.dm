@@ -19,6 +19,8 @@
 			            access_RC_announce, access_keycard_auth, access_tcomsat, access_gateway, access_mechanic)
 	minimal_player_age = 7
 
+	species_whitelist = list("Human")
+
 	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/heads/rd
 
@@ -58,6 +60,8 @@
 	access = list(access_robotics, access_rnd, access_tox_storage, access_science, access_xenobiology)
 	minimal_access = list(access_rnd, access_tox_storage, access_science, access_xenobiology)
 	alt_titles = list("Xenoarcheologist", "Anomalist", "Plasma Researcher", "Xenobiologist", "Research Botanist")
+
+	species_whitelist = list("Human", "Unathi", "Vox", "Skellington", "Grey", "Skeletal Vox", "Skrell")
 
 	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/toxins
@@ -114,6 +118,8 @@
 	access = list(access_robotics, access_tech_storage, access_morgue, access_science, access_rnd) //As a job that handles so many corpses, it makes sense for them to have morgue access.
 	minimal_access = list(access_robotics, access_tech_storage, access_morgue, access_science) //As a job that handles so many corpses, it makes sense for them to have morgue access.
 	alt_titles = list("Biomechanical Engineer","Mechatronic Engineer")
+
+	species_whitelist = list("Human", "Unathi", "Vox", "Skellington", "Grey", "Skeletal Vox", "Skrell")
 
 	pdaslot=slot_belt
 	pdatype=/obj/item/device/pda/roboticist
