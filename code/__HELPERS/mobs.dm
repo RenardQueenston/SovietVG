@@ -49,7 +49,7 @@ proc/random_name(gender, speciesName = "Human")
 
 
 proc/random_skin_tone(species = "Human")
-	if(species == "Human")
+	if(species != "Vox")
 		switch(pick(60;"caucasian", 15;"afroamerican", 10;"african", 10;"latino", 5;"albino"))
 			if("caucasian")
 				. = -10
@@ -71,7 +71,7 @@ proc/random_skin_tone(species = "Human")
 		return 0
 
 proc/skintone2racedescription(tone, species = "Human")
-	if(species == "Human")
+	if(species != "Vox")
 		switch (tone)
 			if(30 to INFINITY)
 				return "albino"
