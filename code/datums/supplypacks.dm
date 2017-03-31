@@ -906,6 +906,16 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 	access = access_security
 	group = "Security"
 
+/datum/supply_packs/fourtyfive/sniper
+	name = "Sniper Rifle"
+	contains = list(/obj/item/weapon/gun/projectile/hecate)
+	cost = 2000
+	containertype = /obj/structure/closet/crate/secure/gear
+	containername = "Sniper Rifle Crate"
+	access = access_armory
+	group = "Security"
+
+
 //////HOSPITALITY//////
 
 /datum/supply_packs/food
@@ -1197,7 +1207,7 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 					/obj/machinery/power/rad_collector)
 	containername = "collector crate"
 	group = "Engineering"
-	
+
 /datum/supply_packs/engine/prism
 	name = "Optical prisms"
 	contains = list(/obj/machinery/prism,
