@@ -953,6 +953,8 @@ var/list/slot_equipment_priority = list( \
 
 	if (ismob(AM))
 		var/mob/M = AM
+		if(M.pull_damage()) //Pulling someone who's messed up will mess them up a lot further, inform the user.
+			to_chat(usr,"<span class='warning'>Pulling \the [M] in their current condition would probably be a bad idea.</span>")
 		if (M.locked_to) //If the mob is locked_to on something, let's just try to pull the thing they're locked_to to for convenience's sake.
 			P = M.locked_to
 
@@ -1292,10 +1294,10 @@ var/list/slot_equipment_priority = list( \
 		var/t1 = text("window=[href_list["mach_close"]]")
 		unset_machine()
 		src << browse(null, t1)
-	if (href_list["joinresponseteam"])
-		if(usr.client)
-			var/client/C = usr.client
-			C.JoinResponseTeam()
+	//if (href_list["joinresponseteam"])
+	//	if(usr.client)
+	//		var/client/C = usr.client
+	//		C.JoinResponseTeam()
 
 /mob/proc/pull_damage()
 	if(ishuman(src))
@@ -1741,6 +1743,21 @@ mob/proc/on_foot()
 
 /mob/proc/nuke_act() //Called when caught in a nuclear blast
 	return
+
+/mob/supermatter_act(atom/source, severity)
+	var/contents = get_contents_in_object(src)
+
+	var/obj/item/supermatter_shielding/SS = locate(/obj/item/supermatter_shielding) in contents
+	if(SS)
+		SS.supermatter_act(source)
+	else
+
+		if(severity == SUPERMATTER_DUST)
+			dust()
+			return 1
+		else
+			qdel(src)
+			return 1
 
 /mob/proc/remove_jitter()
 	if(jitteriness)
