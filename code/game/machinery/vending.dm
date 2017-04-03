@@ -1718,7 +1718,11 @@ var/global/num_vending_terminals = 1
 		/obj/item/weapon/reagent_containers/food/condiment/peppermill = 5,
 		/obj/item/weapon/reagent_containers/food/condiment/saltshaker	= 5,
 		/obj/item/weapon/reagent_containers/food/condiment/vinegar = 5,
-		/obj/item/weapon/storage/bag/food = 5
+		/obj/item/weapon/storage/bag/food = 5,
+		/obj/item/weapon/storage/bag/lunchbox = 3,
+		/obj/item/weapon/storage/bag/lunchbox/heart = 3,
+		/obj/item/weapon/storage/bag/lunchbox/cat = 3,
+		/obj/item/weapon/storage/bag/lunchbox/nt = 3,
 		)
 	contraband = list(
 		/obj/item/weapon/kitchen/utensil/spoon = 2,
