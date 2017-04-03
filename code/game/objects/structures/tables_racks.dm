@@ -361,12 +361,12 @@
 /obj/structure/table/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
 	if (ismob(O))
 		..()
-		return //does we need it here?
+/*		return //does we need it here?
 	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
 		return
 	if(user.drop_item())
 		if (O.loc != src.loc)
-			step(O, get_dir(O, src))
+			step(O, get_dir(O, src)*/
 	return
 
 
@@ -428,17 +428,6 @@
 		if (R.status == 2)
 			return 0
 	return T.straight_table_check(direction)
-
-/obj/structure/table/verb/can_touch(var/mob/user)
-	if (!user)
-		return 0
-	if (user.stat)	//zombie goasts go away
-		return 0
-	if (issilicon(user))
-		to_chat(user, "<span class='notice'>You need hands for this.</span>")
-		return 0
-	return 1
-
 
 /obj/structure/table/verb/do_flip()
 	set name = "Flip table"
@@ -763,13 +752,17 @@
 	destroy()
 
 /obj/structure/rack/MouseDrop_T(obj/O as obj, mob/user as mob)
-	if (ismob(O))
-		..()
-	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
+/*	if (isrobot(user))
 		return
-	if(user.drop_item(O))
-		if (O.loc != src.loc)
-			step(O, get_dir(O, src))
+	if ( (!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O) ) //not some obj or not handling this obj
+		to_chat(user, "<span class='warning'>You should free your hands to climb somewhere!.</span>")
+		return
+	if(!user.drop_item())
+		return
+	if (O.loc != src.loc)
+		step(O, get_dir(O, src))*/
+	if(ismob(user))
+		..() //works anyway =/
 	return
 
 /obj/structure/rack/attackby(obj/item/weapon/W as obj, mob/user as mob)
