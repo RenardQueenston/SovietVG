@@ -380,7 +380,7 @@
 		return
 	if(user.drop_item())
 		if (O.loc != src.loc)
-			step(O, get_dir(O, src)*/
+			step(O, get_dir(O, src))
 	return
 
 
