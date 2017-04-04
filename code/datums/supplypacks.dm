@@ -918,6 +918,25 @@ var/list/all_supply_groups = list("Supplies","Clothing","Security","Hospitality"
 
 //////HOSPITALITY//////
 
+/datum/supply_packs/lunchbox
+	name = "Pack of Lunchboxes"
+	contains = list(/obj/item/weapon/storage/bag/lunchbox/nt,
+					/obj/item/weapon/storage/bag/lunchbox/nt,
+					/obj/item/weapon/storage/bag/lunchbox/nt,
+					/obj/item/weapon/storage/bag/lunchbox/cat,
+					/obj/item/weapon/storage/bag/lunchbox/cat,
+					/obj/item/weapon/storage/bag/lunchbox/cat,
+					/obj/item/weapon/storage/bag/lunchbox/heart,
+					/obj/item/weapon/storage/bag/lunchbox/heart,
+					/obj/item/weapon/storage/bag/lunchbox/heart,
+					/obj/item/weapon/storage/bag/lunchbox,
+					/obj/item/weapon/storage/bag/lunchbox,
+					/obj/item/weapon/storage/bag/lunchbox)
+	cost = 50
+	containertype = /obj/structure/closet/crate
+	containername = "Lunchboxes crate"
+	group = "Hospitality"
+
 /datum/supply_packs/food
 	name = "Basic cooking supplies"
 	contains = list(/obj/item/weapon/reagent_containers/food/drinks/flour,
