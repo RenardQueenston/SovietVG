@@ -155,6 +155,37 @@
 	new/obj/item/weapon/reagent_containers/food/drinks/soda_cans/space_mountain_wind(src)//-7 drowsy, -1 sleepy
 	update_icon()
 
+//Lunchboxes
+
+/obj/item/weapon/storage/bag/lunchbox
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "lunchbox_rainbow"
+	name = "Rainbow Lunchbox"
+	desc = "Pretty lunchbox for food."
+	storage_slots = 4
+	max_combined_w_class = 8
+	w_class = W_CLASS_MEDIUM
+	can_only_hold = list("/obj/item/weapon/reagent_containers/food/snacks")
+
+/obj/item/weapon/storage/bag/lunchbox/heart
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "lunchbox_heart"
+	name = "Heart Lunchbox"
+	desc = "With love!"
+
+/obj/item/weapon/storage/bag/lunchbox/cat
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "lunchbox_cat"
+	name = "Cat Lunchbox"
+	desc = "Maybe he will say Meow for you!"
+
+/obj/item/weapon/storage/bag/lunchbox/nt
+	icon = 'icons/obj/kitchen.dmi'
+	icon_state = "lunchbox_nt"
+	name = "NanoTrasen Lunchbox"
+	desc = "Can you place Syndi cakes in this lunchbox?"
+
+
 // -----------------------------
 //          Borg Food bag
 // -----------------------------
