@@ -142,6 +142,13 @@ obj/item/clothing/mask/bandana/red
 	name = "red bandana"
 	icon_state = "bandred"
 
+obj/item/clothing/mask/bandana/mintt
+	name = "Kiselev's bandana"
+	icon_state = "bandmintt"
+	item_state = "bandmintt"
+	desc = "You can smell mint and robust."
+
+
 obj/item/clothing/mask/joy
 	name = "joy mask"
 	desc = "Express your happiness or hide your sorrows with this laughing face with crying tears of joy cutout."
