@@ -267,31 +267,27 @@
 	if(prob(75))
 		destroy()
 
-/obj/structure/table/attack_paw(mob/living/user)
+/obj/structure/table/attack_paw(mob/user)
 	if(M_HULK in user.mutations)
-		user.do_attack_animation(src, user)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		visible_message("<span class='danger'>[user] smashes the [src] apart!</span>")
 		user.delayNextAttack(8)
 		destroy()
 
 
-/obj/structure/table/attack_alien(mob/living/user)
-	user.do_attack_animation(src, user)
+/obj/structure/table/attack_alien(mob/user)
 	visible_message("<span class='danger'>[user] slices [src] apart!</span>")
 	destroy()
 
 /obj/structure/table/attack_animal(mob/living/simple_animal/user)
 	if(user.environment_smash>0)
-		user.do_attack_animation(src, user)
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		destroy()
 
 
 
-/obj/structure/table/attack_hand(mob/living/user)
+/obj/structure/table/attack_hand(mob/user)
 	if(M_HULK in user.mutations)
-		user.do_attack_animation(src, user)
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		destroy()
@@ -362,25 +358,15 @@
 			return !density
 	return 1
 
-/obj/structure/table/MouseDrop_T(atom/movable/O as obj, mob/user as mob)
-	if(O == user)
-		if(!ishuman(user) || !Adjacent(user) || user.incapacitated() || user.lying) // Doesn't work if you're not dragging yourself, not a human, not in range or incapacitated
-			return
-		var/mob/living/carbon/M = user
-		M.apply_damage(2, BRUTE, LIMB_HEAD, used_weapon = "[src]")
-		M.Knockdown(1)
-		if (prob(50))
-			playsound(M, 'sound/items/trayhit1.ogg', 50, 1)
-		else
-			playsound(M, 'sound/items/trayhit2.ogg', 50, 1)
-		M.visible_message("<span class='danger'>[user] bangs \his head on \the [src].</span>", "<span class='danger'>You bang your head on \the [src].</span>", "You hear a bang.")
-		return
-
+/obj/structure/table/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
+	if (ismob(O))
+		..()
+/*		return //does we need it here?
 	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
 		return
 	if(user.drop_item())
 		if (O.loc != src.loc)
-			step(O, get_dir(O, src))
+			step(O, get_dir(O, src)*/
 	return
 
 
@@ -637,14 +623,13 @@
 	health = 30
 	climb_stun = 3.5 //falldawn from broken table - pretty shietty and painfull
 
-/obj/structure/table/glass/attackby(obj/item/W as obj, mob/living/user as mob, params)
+/obj/structure/table/glass/attackby(obj/item/W as obj, mob/user as mob, params)
 	if (istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
 		var/obj/item/weapon/grab/G = W
 		if (istype(G.affecting, /mob/living))
 			var/mob/living/M = G.affecting
 			if (G.state < GRAB_AGGRESSIVE)
 				if(user.a_intent == I_HURT)
-					user.do_attack_animation(src, W)
 					if (prob(15))
 						M.Knockdown(5)
 					M.apply_damage(15,def_zone = LIMB_HEAD)
@@ -664,7 +649,6 @@
 			returnToPool(W)
 
 	else if (user.a_intent == I_HURT)
-		user.do_attack_animation(src, W)
 		user.delayNextAttack(10)
 		health -= W.force
 		user.visible_message("<span class='warning'>\The [user] hits \the [src] with \the [W].</span>", \
@@ -791,28 +775,24 @@
 			offset_step++
 			return 1
 
-/obj/structure/table/attack_hand(mob/living/user)
+/obj/structure/table/attack_hand(mob/user)
 	if(M_HULK in user.mutations)
-		user.do_attack_animation(src, user)
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		destroy()
 
-/obj/structure/rack/attack_paw(mob/living/user)
+/obj/structure/rack/attack_paw(mob/user)
 	if(M_HULK in user.mutations)
-		user.do_attack_animation(src, user)
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		destroy()
 
-/obj/structure/rack/attack_alien(mob/living/user)
-	user.do_attack_animation(src, user)
+/obj/structure/rack/attack_alien(mob/user)
 	visible_message("<span class='danger'>[user] slices [src] apart!</span>")
 	destroy()
 
 /obj/structure/rack/attack_animal(mob/living/simple_animal/user)
 	if(user.environment_smash>0)
-		user.do_attack_animation(src, user)
 		visible_message("<span class='danger'>[user] smashes [src] apart!</span>")
 		destroy()
 
