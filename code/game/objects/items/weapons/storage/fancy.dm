@@ -326,6 +326,57 @@
 	icon_state = "Dpacket"
 	item_state = "Dpacket"
 
+/obj/item/weapon/storage/fancy/cigarettes/malboro
+	name = "Malbro"
+	desc = "A packet of six imported cancer sticks. A label on the packaging reads, \"Cigarettes is your bro!\""
+	icon_state = "malboro"
+	item_state = "cigpacket"
+
+/obj/item/weapon/storage/fancy/cigarettes/Churchill
+	name = "Churchill Red"
+	desc = "A packet of six imported cancer sticks. A label on the packaging reads, \"Like Winston but better!\""
+	icon_state = "WBcigpacket"
+	item_state = "cigpacket"
+
+/obj/item/weapon/storage/fancy/cigarettes/Senator
+	name = "Senator"
+	desc = "A packet of six imported cancer sticks. A label on the packaging reads, \"Rest in Peace, Senate of Soviet Station.\""
+	icon_state = "EScigpacket"
+	item_state = "cigpacket"
+
+/obj/item/weapon/storage/fancy/cigarettes/Rich_Man
+	name = "Rich Man"
+	desc = "A packet of six imported cancer sticks. A label on the packaging reads, \"For those who sant to show their low budget.\""
+	icon_state = "Rcigpacket"
+	item_state = "cigpacket"
+
+/obj/item/weapon/storage/fancy/cigarettes/Peter
+	name = "Peter The Second"
+	desc = "A packet of six imported cancer sticks. A label on the packaging reads, \"Get out from my swamp!.\""
+	icon_state = "PTFcigpacket"
+	item_state = "cigpacket"
+
+/obj/item/weapon/storage/fancy/cigarettes/Ledorado
+	name = "El Ledorado"
+	desc = "A packet of six imported cancer sticks. A label on the packaging reads, \"Full of gold!.\""
+	icon_state = "ELcigpacket"
+	item_state = "cigpacket"
+
+/obj/item/weapon/storage/fancy/cigarettes/Alien
+	name = "Alien In A Nutshell"
+	desc = "A packet of six imported cancer sticks. A label on the packaging reads, \"In space nobody hears you scream.\""
+	icon_state = "ISAcigpacket"
+	item_state = "cigpacket"
+
+/obj/item/weapon/storage/fancy/cigarettes/Corgi
+	name = "Corgi"
+	desc = "A packet of six imported cancer sticks. A label on the packaging reads, \"Head of Personnel's choise!\""
+	icon_state = "CIcigpacket"
+	item_state = "cigpacket"
+
+
+
+
 
 /*
  * Vial Box

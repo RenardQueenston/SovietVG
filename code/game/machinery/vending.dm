@@ -1217,6 +1217,14 @@ var/global/num_vending_terminals = 1
 		/obj/item/weapon/storage/fancy/cigarettes = 10,
 		/obj/item/weapon/storage/fancy/matchbox = 10,
 		/obj/item/weapon/lighter/random = 4,
+		/obj/item/weapon/storage/fancy/cigarettes/malboro = 10,
+		/obj/item/weapon/storage/fancy/cigarettes/Churchill = 10,
+		/obj/item/weapon/storage/fancy/cigarettes/Senator = 10,
+		/obj/item/weapon/storage/fancy/cigarettes/Rich_Man = 10,
+		/obj/item/weapon/storage/fancy/cigarettes/Peter = 10,
+		/obj/item/weapon/storage/fancy/cigarettes/Ledorado = 10,
+		/obj/item/weapon/storage/fancy/cigarettes/Alien = 10,
+		/obj/item/weapon/storage/fancy/cigarettes/Corgi = 10,
 		)
 	contraband = list(
 		/obj/item/weapon/lighter/zippo = 4,
@@ -1227,7 +1235,15 @@ var/global/num_vending_terminals = 1
 		)
 	prices = list(
 		/obj/item/weapon/storage/fancy/cigarettes = 20,
-		/obj/item/weapon/storage/fancy/matchbox = 25,
+		/obj/item/weapon/storage/fancy/cigarettes/malboro = 45,
+		/obj/item/weapon/storage/fancy/cigarettes/Churchill = 35,
+		/obj/item/weapon/storage/fancy/cigarettes/Senator = 30,
+		/obj/item/weapon/storage/fancy/cigarettes/Rich_Man = 40,
+		/obj/item/weapon/storage/fancy/cigarettes/Peter = 15,
+		/obj/item/weapon/storage/fancy/cigarettes/Ledorado = 50,
+		/obj/item/weapon/storage/fancy/cigarettes/Alien = 20,
+		/obj/item/weapon/storage/fancy/cigarettes/Corgi = 60,
+		/obj/item/weapon/storage/fancy/matchbox = 10,
 		/obj/item/weapon/lighter/random = 25,
 		)
 
