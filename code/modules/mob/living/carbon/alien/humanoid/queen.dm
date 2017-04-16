@@ -3,10 +3,27 @@
 	caste = "q"
 	maxHealth = 300
 	health = 300
-	icon_state = "alienq_s"
+	icon = 'icons/mob/giantmobs.dmi'
+	icon_state = "queen_s"
+	pixel_x = -16 * PIXEL_MULTIPLIER
 	status_flags = CANPARALYSE
 	heal_rate = 5
 	plasma_rate = 20
+
+/mob/living/carbon/alien/humanoid/queen/update_icons()
+	lying_prev = lying	//so we don't update overlays for lying/standing unless our stance changes again
+	update_hud()		//TODO: remove the need for this to be here
+	overlays.len = 0
+	if(lying)
+		if(resting)
+			icon_state = "queen_sleep"
+		else						icon_state = "queen_l"
+		for(var/image/I in overlays_lying)
+			overlays += I
+	else
+		icon_state = "queen_s"
+		for(var/image/I in overlays_standing)
+			overlays += I
 
 /mob/living/carbon/alien/humanoid/queen/movement_delay()
 	var/tally = 5 + move_delay_add + config.alien_delay //Queens are slow as fuck
