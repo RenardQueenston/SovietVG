@@ -57,6 +57,7 @@
 	var/obj/item/weapon/arrow = null      // Nocked arrow.
 	var/obj/item/weapon/cell/cell = null  // Used for firing special projectiles like rods.
 
+
 /obj/item/weapon/crossbow/attackby(obj/item/W as obj, mob/user as mob)
 	if(!arrow)
 		if (istype(W,/obj/item/weapon/arrow))
@@ -212,3 +213,100 @@
 		arrow = null
 		tension = 0
 		icon_state = "crossbow"
+
+
+
+/obj/item/weapon/crossbow/bow
+	name = "bow"
+	desc = "A sturdy bow made out of wood."
+	icon_state = "bow_unloaded"
+	item_state = "bow"
+	fire_sound = 'sound/weapons/grenadelaunch.ogg'
+	var/draw_sound = 'sound/weapons/draw_bow.ogg'
+	slot_flags = SLOT_BACK
+
+	var/max_tension = 2
+	var/release_speed = 8
+
+obj/item/weapon/crossbow/bow/attackby(obj/item/W as obj, mob/user as mob)
+	if(!arrow)
+		if (istype(W,/obj/item/weapon/arrow))
+			if(!user.drop_item(W, src))
+				user << "<span class='warning'>You can't let go of \the [W]!</span>"
+				return
+
+			arrow = W
+			user.visible_message("[user] slides [arrow] into [src].","You put [arrow] on [src].")
+			icon_state = "bow_loaded"
+			return
+		else if(istype(W,/obj/item/stack/rods))
+			var/obj/item/stack/rods/R = W
+			R.use(1)
+			arrow = new /obj/item/weapon/arrow/rod(src)
+			arrow.fingerprintslast = src.fingerprintslast
+			arrow.forceMove(src)
+			icon_state = "bow_loaded"
+			user.visible_message("[user] puts [arrow] on [src].","You put [arrow] on [src].")
+
+/obj/item/weapon/crossbow/bow/proc/increase_tension(var/mob/user as mob)
+
+
+	if(!arrow || !tension || current_user != user) //Arrow has been fired, bow has been relaxed or user has changed.
+		return
+
+	tension++
+	icon_state = "bow_firing"
+
+	if(tension>=max_tension)
+		tension = max_tension
+		to_chat(usr, "[src] creaks as you draw the string to its maximum tension!")
+	else
+		user.visible_message("[usr] draws back the string of [src]!","You continue drawing back the string of [src]!")
+		spawn(25) increase_tension(user)
+
+/obj/item/weapon/crossbow/proc/Fire(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, params, reflex = 0)
+
+
+	add_fingerprint(user)
+
+	var/turf/curloc = get_turf(user)
+	var/turf/targloc = get_turf(target)
+	if (!istype(targloc) || !istype(curloc))
+		return
+
+	user.visible_message("<span class='danger'>[user] releases [src] and sends [arrow] streaking toward [target]!</span>","<span class='danger'>You release [src] and send [arrow] streaking toward [target]!</span>")
+
+	var/obj/item/weapon/arrow/A = arrow
+	A.forceMove(get_turf(user))
+	A.throw_at(target,10,tension*release_speed)
+	arrow = null
+	tension = 0
+	icon_state = "bow_unloaded"
+
+/obj/item/weapon/crossbow/dropped(mob/user)
+	if(arrow)
+		var/obj/item/weapon/arrow/A = arrow
+		A.forceMove(get_turf(src))
+		A.removed(user)
+		arrow = null
+		tension = 0
+		icon_state = "bow_unloaded"
+
+//quiver
+/obj/item/weapon/storage/backpack/quiver
+	name = "quiver"
+	desc = "A quiver for holding bow and arrows."
+	icon_state = "quiver"
+	item_state = "quiver"
+	storage_slots = 11
+	can_hold = list(
+		/obj/item/weapon/arrow
+		/obj/item/weapon/arrow/quill
+		/obj/item/weapon/arrow/rod
+		/obj/item/weapon/crossbow/bow
+		)
+
+/obj/item/weapon/storage/backpack/quiver/full/New()
+	..()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/weapon/arrow(src)
