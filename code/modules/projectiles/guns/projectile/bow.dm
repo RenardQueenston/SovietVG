@@ -221,12 +221,10 @@
 	desc = "A sturdy bow made out of wood."
 	icon_state = "bow_unloaded"
 	item_state = "bow"
-	fire_sound = 'sound/weapons/grenadelaunch.ogg'
 	var/draw_sound = 'sound/weapons/draw_bow.ogg'
 	slot_flags = SLOT_BACK
-
-	var/max_tension = 2
-	var/release_speed = 8
+	max_tension = 2
+	release_speed = 8
 
 obj/item/weapon/crossbow/bow/attackby(obj/item/W as obj, mob/user as mob)
 	if(!arrow)
@@ -248,34 +246,25 @@ obj/item/weapon/crossbow/bow/attackby(obj/item/W as obj, mob/user as mob)
 			icon_state = "bow_loaded"
 			user.visible_message("[user] puts [arrow] on [src].","You put [arrow] on [src].")
 
-/obj/item/weapon/crossbow/bow/proc/increase_tension(var/mob/user as mob)
-
-
+/obj/item/weapon/crossbow/bow/proc/bowIncrease_tension(var/mob/user as mob)
 	if(!arrow || !tension || current_user != user) //Arrow has been fired, bow has been relaxed or user has changed.
 		return
-
 	tension++
 	icon_state = "bow_firing"
-
 	if(tension>=max_tension)
 		tension = max_tension
 		to_chat(usr, "[src] creaks as you draw the string to its maximum tension!")
 	else
 		user.visible_message("[usr] draws back the string of [src]!","You continue drawing back the string of [src]!")
-		spawn(25) increase_tension(user)
+		spawn(25) bowIncrease_tension(user)
 
-/obj/item/weapon/crossbow/proc/Fire(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, params, reflex = 0)
-
-
+/obj/item/weapon/crossbow/bow/proc/bowFire(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, params, reflex = 0)
 	add_fingerprint(user)
-
 	var/turf/curloc = get_turf(user)
 	var/turf/targloc = get_turf(target)
 	if (!istype(targloc) || !istype(curloc))
 		return
-
 	user.visible_message("<span class='danger'>[user] releases [src] and sends [arrow] streaking toward [target]!</span>","<span class='danger'>You release [src] and send [arrow] streaking toward [target]!</span>")
-
 	var/obj/item/weapon/arrow/A = arrow
 	A.forceMove(get_turf(user))
 	A.throw_at(target,10,tension*release_speed)
@@ -299,11 +288,12 @@ obj/item/weapon/crossbow/bow/attackby(obj/item/W as obj, mob/user as mob)
 	icon_state = "quiver"
 	item_state = "quiver"
 	storage_slots = 11
-	can_hold = list(
-		/obj/item/weapon/arrow
-		/obj/item/weapon/arrow/quill
-		/obj/item/weapon/arrow/rod
-		/obj/item/weapon/crossbow/bow
+	max_combined_w_class = 200
+	can_only_hold = list(
+		"/obj/item/weapon/arrow",
+		"/obj/item/weapon/arrow/quill",
+		"/obj/item/weapon/arrow/rod",
+		"/obj/item/weapon/crossbow/bow"
 		)
 
 /obj/item/weapon/storage/backpack/quiver/full/New()
