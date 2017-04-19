@@ -224,7 +224,7 @@
 	var/draw_sound = 'sound/weapons/draw_bow.ogg'
 	slot_flags = SLOT_BACK
 	max_tension = 2
-	release_speed = 8
+	release_speed = 7
 
 obj/item/weapon/crossbow/bow/attackby(obj/item/W as obj, mob/user as mob)
 	if(!arrow)

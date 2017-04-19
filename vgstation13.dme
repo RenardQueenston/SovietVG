@@ -1772,6 +1772,7 @@
 #include "code\modules\projectiles\guns\projectile\constructable\blastcannon.dm"
 #include "code\modules\projectiles\guns\projectile\constructable\blinder.dm"
 #include "code\modules\projectiles\guns\projectile\constructable\blunderbuss.dm"
+#include "code\modules\projectiles\guns\projectile\constructable\bowcraft.dm"
 #include "code\modules\projectiles\guns\projectile\constructable\cannon.dm"
 #include "code\modules\projectiles\guns\projectile\constructable\flamethrower.dm"
 #include "code\modules\projectiles\guns\projectile\constructable\gunsmithing.dm"
