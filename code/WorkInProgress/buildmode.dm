@@ -9,6 +9,7 @@
 	if(M.client)
 		if(M.client.buildmode)
 			log_admin("[key_name(usr)] has left build mode.")
+			message_admins("[key_name(usr)] has left build mode.")
 			M.client.buildmode = 0
 			M.client.show_popup_menus = 1
 			var/obj/effect/bmode/buildholder/holder = null
@@ -23,6 +24,7 @@
 					returnToPool(BM)
 		else
 			log_admin("[key_name(usr)] has entered build mode.")
+			message_admins("[key_name(usr)] has entered build mode.")
 			M.client.buildmode = 1
 			M.client.show_popup_menus = 0
 
