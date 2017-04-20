@@ -221,6 +221,7 @@ var/list/datum/stack_recipe/wood_recipes = list (
 	new/datum/stack_recipe("boomerang",			/obj/item/weapon/boomerang,				6,		time = 50),
 	new/datum/stack_recipe("buckler",			/obj/item/weapon/shield/riot/buckler,	5,		time = 50),
 	new/datum/stack_recipe("wooden paddle",		/obj/item/weapon/macuahuitl,			1,		time = 50),
+	new/datum/stack_recipe("bow frame",         /obj/item/weapon/bow_frame,             2,      time = 20),
 	)
 
 /* =========================================================================
@@ -249,4 +250,5 @@ var/list/datum/stack_recipe/cardboard_recipes = list (
 ======================================================================== */
 var/list/datum/stack_recipe/leather_recipes = list (
 	new/datum/stack_recipe("Bullwhip",	/obj/item/weapon/bullwhip,	10,	time = 100,),
+	new/datum/stack_recipe("quiver",    /obj/item/weapon/storage/backpack/quiver, 10, time = 100,),
 	)
