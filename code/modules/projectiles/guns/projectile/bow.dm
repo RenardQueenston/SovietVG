@@ -293,10 +293,12 @@ obj/item/weapon/crossbow/bow/attackby(obj/item/W as obj, mob/user as mob)
 		"/obj/item/weapon/arrow",
 		"/obj/item/weapon/arrow/quill",
 		"/obj/item/weapon/arrow/rod",
+		"/obj/item/stack/rods",
 		"/obj/item/weapon/crossbow/bow"
 		)
 
 /obj/item/weapon/storage/backpack/quiver/full/New()
+	icon_state = "quiver"
 	..()
 	for(var/i in 1 to storage_slots)
 		new /obj/item/weapon/arrow(src)
