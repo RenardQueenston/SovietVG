@@ -250,4 +250,5 @@ var/list/datum/stack_recipe/cardboard_recipes = list (
 ======================================================================== */
 var/list/datum/stack_recipe/leather_recipes = list (
 	new/datum/stack_recipe("Bullwhip",	/obj/item/weapon/bullwhip,	10,	time = 100,),
+	new/datum/stack_recipe("quiver",    /obj/item/weapon/storage/backpack/quiver, 10, time = 100,),
 	)
