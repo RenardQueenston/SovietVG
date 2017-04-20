@@ -78,6 +78,7 @@
 	var/braintype = "Cyborg"
 	var/lawcheck[1]
 	var/ioncheck[1]
+	var/pose
 
 
 /mob/living/silicon/robot/New(loc,var/syndie = 0,var/unfinished = 0,var/startup_sound='sound/voice/liveagain.ogg')
@@ -158,6 +159,7 @@
 	add_language(LANGUAGE_CLATTER, 0)
 	add_language(LANGUAGE_MONKEY, 0)
 	add_language(LANGUAGE_UNATHI, 0)
+	add_language(LANGUAGE_RESOMI, 0)
 	add_language(LANGUAGE_CATBEAST, 0)
 	add_language(LANGUAGE_SKRELLIAN, 0)
 	add_language(LANGUAGE_GUTTER, 0)
@@ -1407,6 +1409,20 @@
 		state = 1
 	lockcharge = state
 	update_canmove()
+
+/mob/living/silicon/robot/verb/pose()
+	set name = "Set Pose"
+	set desc = "Sets a description which will be shown when someone examines you."
+	set category = "IC"
+	pose =  copytext(sanitize(input(usr, "This is [src]. It is...", "Pose", null)  as text), 1, MAX_MESSAGE_LEN)
+
+/mob/living/silicon/robot/verb/set_flavor()
+	set name = "Set Flavour Text"
+	set desc = "Sets an extended description of your character's features."
+	set category = "IC"
+
+	flavor_text =  copytext(sanitize(input(usr, "Please enter your new flavour text.", "Flavour text", null)  as text), 1)
+
 
 /mob/living/silicon/robot/proc/choose_icon(var/triesleft, var/list/module_sprites)
 	if(triesleft == 0 || !module_sprites.len)
