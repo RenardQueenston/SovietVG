@@ -153,6 +153,7 @@ var/const/MAX_SAVE_SLOTS = 15
 	var/used_skillpoints = 0
 	var/skill_specialization = null
 	var/list/skills = list() // skills can range from 0 to 3
+	var/flavor_text = ""
 
 	// maps each organ to either null(intact), "cyborg" or "amputated"
 	// will probably not be able to do this for head and torso ;)
@@ -357,6 +358,7 @@ var/const/MAX_SAVE_SLOTS = 15
 	<a href='?_src_=prefs;preference=special_popup'><b>[special_popup ? "Yes" : "No"]</b></a><br>
 	<b>Character Records:<b>
 	[jobban_isbanned(user, "Records") ? "Banned" : "<a href=\"byond://?src=\ref[user];preference=records;record=1\">Set</a></b><br>"]
+	<b>Flavor Text:</b><a href='byond://?src=\ref[user];preference=flavor_text;task=input'>Set</a><br>
 	<b>Attack Animations:<b>
 	<a href='?_src_=prefs;preference=attack_animation'><b>[attack_animation ? (attack_animation == ITEM_ANIMATION? "Item Anim." : "Person Anim.") : "No"]</b></a><br>
   </div>
@@ -1257,6 +1259,14 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 					if(new_relation)
 						nanotrasen_relation = new_relation
 
+				if("flavor_text")
+					var/msg = input(usr,"Set the flavor text in your 'examine' verb.","Flavor Text",html_decode(flavor_text)) as message
+					if(msg != null)					if(msg != null)
+						msg = copytext(msg, 1, MAX_MESSAGE_LEN)
+						msg = html_encode(msg)
+
+						flavor_text = msg
+
 				if("limbs")
 					var/list/limb_input = list(
 						"Left Leg [organ_data[LIMB_LEFT_LEG]]" = LIMB_LEFT_LEG,
@@ -1578,6 +1588,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 	if(character.dna)
 		character.dna.real_name = character.real_name
 
+	character.flavor_text = flavor_text
 	character.med_record = med_record
 	character.sec_record = sec_record
 	character.gen_record = gen_record

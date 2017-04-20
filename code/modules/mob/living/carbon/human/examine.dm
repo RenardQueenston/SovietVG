@@ -470,7 +470,15 @@
 		msg += {"<span class = 'deptradio'>Physical status:</span> <a href='?src=\ref[src];medical=1'>\[[medical]\]</a>\n
 			<span class = 'deptradio'>Medical records:</span> <a href='?src=\ref[src];medrecord=`'>\[View\]</a> <a href='?src=\ref[src];medrecordadd=`'>\[Add comment\]</a>\n"}
 
+	if(print_flavor_text())
+		msg += "[print_flavor_text()]\n"
+
 	msg += "*---------*</span>"
+
+	if(pose)
+		if( findtext(pose,".",length(pose)) == 0 && findtext(pose,"!",length(pose)) == 0 && findtext(pose,"?",length(pose)) == 0 )
+			pose = addtext(pose,".")
+		msg += "\n[t_He] is [pose]"
 
 	to_chat(user, msg)
 	if(istype(user))
@@ -505,6 +513,7 @@
 				return P.medHUD
 	else
 		return 0
+
 
 #undef Jitter_Medium
 #undef Jitter_High

@@ -405,6 +405,7 @@
 	var/oldspecies = src.dna.species
 	src.dna = chosen_dna.Clone()
 	src.real_name = chosen_dna.real_name
+	src.flavor_text = ""
 	src.UpdateAppearance()
 	var/mob/living/carbon/human/H = src
 	if(istype(H) && oldspecies != dna.species)
