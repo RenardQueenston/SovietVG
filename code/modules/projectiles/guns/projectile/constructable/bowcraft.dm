@@ -29,7 +29,7 @@
 
 /obj/item/weapon/bow_frame/bow_frame2/attackby(obj/item/weapon/W, mob/user)
 	if(istype(W, /obj/item/weapon/screwdriver))
-		to_chat(user, "You make a hole for the strhing in \the [src].")
+		to_chat(user, "You make a hole for the string in \the [src].")
 		if(src.loc == user)
 			user.drop_item(src, force_drop = 1)
 			var/obj/item/weapon/bow_frame/bow_frame3/I = new (get_turf(user))
