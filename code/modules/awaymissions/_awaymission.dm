@@ -73,6 +73,11 @@ Example of the second method:
 	file_path = "maps/RandomZLevels/arcticwaste.dmm"
 	desc = "A frozen wasteland with an underground bunker. Features a gateway."
 
+/datum/map_element/away_mission/sosiskasjungle
+	name = "unknown jungle"
+	file_path = "maps/sosiskoed_jungle.dmm"
+	desc = "An unknown jungle."
+
 /datum/map_element/away_mission/assistantchamber
 	name = "assistant chamber"
 	file_path = "maps/RandomZLevels/assistantChamber.dmm"
