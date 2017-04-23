@@ -30,12 +30,12 @@
 		var/mob/living/carbon/Ca = src
 		Ca.dropBorers(1)//sanity checking for borers that haven't been qdel'd yet
 	if(client)
-		for(var/obj/screen/movable/spell_master/spell_master in spell_masters)
+		for(var/obj/abstract/screen/movable/spell_master/spell_master in spell_masters)
 			returnToPool(spell_master)
 		spell_masters = null
 		remove_screen_objs()
 		for(var/atom/movable/AM in client.screen)
-			var/obj/screen/screenobj = AM
+			var/obj/abstract/screen/screenobj = AM
 			if(istype(screenobj))
 				if(!screenobj.globalscreen) //Screens taken care of in other places or used by multiple people
 					returnToPool(AM)
@@ -417,7 +417,7 @@
 	if(timestopped)
 		return 0 //under effects of time magick
 	if(spell_masters && spell_masters.len)
-		for(var/obj/screen/movable/spell_master/spell_master in spell_masters)
+		for(var/obj/abstract/screen/movable/spell_master/spell_master in spell_masters)
 			spell_master.update_spells(0, src)
 	return
 
@@ -953,8 +953,6 @@ var/list/slot_equipment_priority = list( \
 
 	if (ismob(AM))
 		var/mob/M = AM
-		if(M.pull_damage()) //Pulling someone who's messed up will mess them up a lot further, inform the user.
-			to_chat(usr,"<span class='warning'>Pulling \the [M] in their current condition would probably be a bad idea.</span>")
 		if (M.locked_to) //If the mob is locked_to on something, let's just try to pull the thing they're locked_to to for convenience's sake.
 			P = M.locked_to
 
@@ -978,6 +976,13 @@ var/list/slot_equipment_priority = list( \
 				M.LAssailant = null
 			else
 				M.LAssailant = usr
+				/*if(ishuman(AM))
+					var/mob/living/carbon/human/HM = AM
+					if (HM.drag_damage()) 
+						if (HM.isincrit())
+							to_chat(usr,"<span class='warning'>Pulling \the [HM] in their current condition would probably be a bad idea.</span>")
+							add_logs(src, HM, "started dragging critically wounded", admin = (HM.ckey))*/
+// Commented out till I can figure out how to fix people still pulling when they're pulled --snx
 
 /mob/verb/stop_pulling()
 	set name = "Stop Pulling"
@@ -1838,7 +1843,7 @@ mob/proc/on_foot()
 	var/init_blinded = blinded
 	var/init_eye_blind = eye_blind
 	var/init_deaf = ear_deaf
-	overlay_fullscreen("blind", /obj/screen/fullscreen/blind)
+	overlay_fullscreen("blind", /obj/abstract/screen/fullscreen/blind)
 	blinded = 1
 	eye_blind = 1
 	ear_deaf = 1
