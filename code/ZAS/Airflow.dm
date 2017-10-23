@@ -263,13 +263,17 @@ proc/AirflowSpace(zone/A)
 /atom/movable/var/tmp/last_airflow = 0
 
 // Mainly for bustanuts.
+
 /atom/movable/proc/AirflowCanPush()
 	return 1
 
 /mob/AirflowCanPush()
-	if (M_HARDCORE in mutations)
-		return 0
 	return 1
+
+/mob/living/carbon/human/AirflowCanPush()
+	if(reagents.has_reagent(MEDCORES))
+		return 0
+	return ..()
 
 /atom/movable/proc/GotoAirflowDest(n)
 	last_airflow = world.time
@@ -394,7 +398,7 @@ proc/AirflowSpace(zone/A)
 		if(od)
 			density = 0
 
-/atom/movable/Bump(atom/Obstacle)
+/atom/movable/to_bump(atom/Obstacle)
 	if(airflow_speed > 0 && airflow_dest)
 		airflow_hit(Obstacle)
 	else

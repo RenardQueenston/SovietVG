@@ -161,6 +161,7 @@ var/const/MAX_SAVE_SLOTS = 15
 
 	var/list/player_alt_titles = new()		// the default name of a job like "Medical Doctor"
 
+	var/flavor_text = ""
 	var/med_record = ""
 	var/sec_record = ""
 	var/gen_record = ""
@@ -210,7 +211,7 @@ var/const/MAX_SAVE_SLOTS = 15
 			while(!speciesinit)
 				sleep(1)
 			randomize_appearance_for()
-			real_name = random_name(gender)
+			real_name = random_name(gender, species)
 			save_character_sqlite(theckey, C, default_slot)
 			saveloaded = 1
 
@@ -221,7 +222,7 @@ var/const/MAX_SAVE_SLOTS = 15
 		attempts++
 	if(attempts >= 5)//failsafe so people don't get locked out of the round forever
 		randomize_appearance_for()
-		real_name = random_name(gender)
+		real_name = random_name(gender, species)
 		log_debug("Player [theckey] FAILED to load save 5 times and has been randomized.")
 		log_admin("Player [theckey] FAILED to load save 5 times and has been randomized.")
 		if(theclient)
@@ -256,7 +257,8 @@ var/const/MAX_SAVE_SLOTS = 15
 	<b>Organs:</b> <a href='byond://?src=\ref[user];preference=organs;task=input'>Set</a><br>
 	<b>Underwear:</b> [gender == MALE ? "<a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_m[underwear]]</a>" : "<a href ='?_src_=prefs;preference=underwear;task=input'><b>[underwear_f[underwear]]</a>"]<br>
 	<b>Backpack:</b> <a href ='?_src_=prefs;preference=bag;task=input'><b>[backbaglist[backbag]]</a><br>
-	<b>Nanotrasen Relation</b>:<br><a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a>
+	<b>Nanotrasen Relation</b>:<br><a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>
+	<b>Flavor Text:</b><a href='byond://?src=\ref[user];preference=flavor_text;task=input'>Set</a><br>
 	</td><td valign='top' width='21%'>
 	<h3>Hair Style</h3>
 	<a href='?_src_=prefs;preference=h_style;task=input'>[h_style]</a><BR>
@@ -942,7 +944,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 /datum/preferences/proc/process_link(mob/user, list/href_list)
 	if(!user)
 		return
-
+	//testing("preference=[href_list["preference"]]")
 	if(href_list["preference"] == "job")
 		switch(href_list["task"])
 			if("close")
@@ -1506,6 +1508,7 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 
 				if("save")
 					if(world.timeofday >= (lastPolled + POLLED_LIMIT))
+						SetRoles(user,href_list)
 						save_preferences_sqlite(user, user.ckey)
 						save_character_sqlite(user.ckey, user, default_slot)
 						lastPolled = world.timeofday
@@ -1571,10 +1574,6 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 /datum/preferences/proc/copy_to(mob/living/carbon/human/character, safety = 0)
 	if(be_random_name)
 		real_name = random_name(gender,species)
-
-	if(be_random_body)
-		random_character(gender)
-
 	if(config.humans_need_surnames && species == "Human")
 		var/firstspace = findtext(real_name, " ")
 		var/name_length = length(real_name)
@@ -1585,14 +1584,21 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 
 	character.real_name = real_name
 	character.name = character.real_name
+	character.flavor_text = flavor_text
 	if(character.dna)
 		character.dna.real_name = character.real_name
+		character.dna.flavor_text = character.flavor_text
 
 	character.flavor_text = flavor_text
 	character.med_record = med_record
 	character.sec_record = sec_record
 	character.gen_record = gen_record
 
+
+	if(be_random_body)
+		//random_character(gender) - This just selects a random character from the OLD character database.
+		randomize_appearance_for() // Correct.
+	else
 	character.setGender(gender)
 	character.age = age
 

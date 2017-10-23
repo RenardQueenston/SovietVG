@@ -135,6 +135,26 @@
 
 	..()
 
+/atom/movable/proc/get_move_delay()
+	// Copied from Move().
+	if(ismob(src))
+		var/mob/M = src
+		if(M.client)
+			return (3+(M.client.move_delayer.next_allowed - world.time))*world.tick_lag
+	return max(5 * world.tick_lag, 1)
+
+// This is designed to only be used occasionally, since procs add overhead.
+/atom/movable/proc/reset_glide_size()
+	glide_size = Ceiling(WORLD_ICON_SIZE / src.get_move_delay() * world.tick_lag) - 1 //We always split up movements into cardinals for issues with diagonal movements.
+	//glide_size = WORLD_ICON_SIZE / max(move_delay, world.tick_lag) * world.tick_lag // Updated calc from http://www.byond.com/forum/?post=1573076
+
+/mob/verb/fix_gliding()
+	set category = "OOC"
+	set name = "Fix Movement"
+	set desc = "Fixes jerky movement caused by BYOND being dumb."
+	reset_glide_size()
+
+
 /atom/movable/Move(newLoc,Dir=0,step_x=0,step_y=0)
 	if(!loc || !newLoc)
 		return 0
@@ -267,6 +287,7 @@
 	locked_atoms    -= AM
 	AM.locked_to     = null
 	category.unlock(AM)
+	//AM.reset_glide_size() // FIXME: Currently broken.
 
 	return TRUE
 
@@ -359,7 +380,7 @@
 /atom/movable/Crossed(atom/movable/AM)
 	return
 
-/atom/movable/Bump(atom/Obstacle)
+/atom/movable/to_bump(atom/Obstacle)
 	if(src.throwing)
 		src.throw_impact(Obstacle)
 		src.throwing = 0
@@ -369,22 +390,22 @@
 
 // harderforce is for things like lighting overlays which should only be moved in EXTREMELY specific sitations.
 /atom/movable/proc/forceMove(atom/destination,var/no_tp=0, var/harderforce = FALSE)
-
-	if(loc)
-		loc.Exited(src)
-
+	var/atom/old_loc = loc
+	loc = destination
 	last_moved = world.time
 
-	var/old_loc = loc
-	loc = destination
+	if(old_loc)
+		old_loc.Exited(src, destination)
+		for(var/atom/movable/AM in old_loc)
+			AM.Uncrossed(src)
 
 	if(loc)
 		last_move = get_dir(old_loc, loc)
 
-		loc.Entered(src)
+		loc.Entered(src, old_loc)
 		if(isturf(loc))
 			var/area/A = get_area_master(loc)
-			A.Entered(src)
+			A.Entered(src, old_loc)
 
 			for(var/atom/movable/AM in loc)
 				AM.Crossed(src,no_tp)
@@ -402,17 +423,18 @@
 
 /atom/movable/proc/update_client_hook(atom/destination)
 	if(locate(/mob) in src)
-		for(var/client/C in parallax_on_clients)
+		for(var/client/C in clients)
 			if((get_turf(C.eye) == destination) && (C.mob.hud_used))
-				C.mob.hud_used.update_parallax_values()
+				C.update_special_views()
 
 /mob/update_client_hook(atom/destination)
 	if(locate(/mob) in src)
-		for(var/client/C in parallax_on_clients)
+		for(var/client/C in clients)
 			if((get_turf(C.eye) == destination) && (C.mob.hud_used))
-				C.mob.hud_used.update_parallax_values()
+				C.update_special_views()
 	else if(client && hud_used)
-		hud_used.update_parallax_values()
+		var/client/C = client
+		C.update_special_views()
 
 /atom/movable/proc/forceEnter(atom/destination)
 	if(destination)
@@ -474,6 +496,11 @@
 		user = usr
 		if(M_HULK in usr.mutations)
 			src.throwing = 2 // really strong throw!
+
+	if(istype(src,/obj/mecha))
+		var/obj/mecha/M = src
+		M.dash_dir = dir
+		src.throwing = 2// mechas will crash through windows, grilles, tables, people, you name it
 
 	var/dist_x = abs(target.x - src.x)
 	var/dist_y = abs(target.y - src.y)
@@ -720,6 +747,10 @@
 /atom/movable/proc/can_apply_inertia()
 	return (!src.anchored && !(src.pulledby && src.pulledby.Adjacent(src)))
 
+//Called when somebody begins to pull this atom
+/atom/movable/proc/on_pull_start(mob/living/L)
+	return
+
 /atom/movable/proc/send_to_future(var/duration)	//don't override this, only call it
 	spawn()
 		actual_send_to_future(duration)
@@ -906,3 +937,6 @@
 	sleep(3)
 	for(var/client/C in viewers)
 		C.images -= item
+
+/atom/movable/proc/make_invisible(var/source_define, var/time)	//Makes things practically invisible, not actually invisible. Alpha is set to 1.
+	return invisibility || alpha <= 1	//already invisible

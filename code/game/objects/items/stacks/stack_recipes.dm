@@ -89,6 +89,7 @@ var/list/datum/stack_recipe/metal_recipes = list (
 		new/datum/stack_recipe/chair("stool",              /obj/item/weapon/stool												   ),
 		new/datum/stack_recipe/chair("bar stool",          /obj/item/weapon/stool/bar                                              ),
 		new/datum/stack_recipe/chair("chair",              /obj/structure/bed/chair,                 one_per_turf = 1, on_floor = 1),
+		new/datum/stack_recipe/chair("folding chair",      /obj/structure/bed/chair/folding,         one_per_turf = 1, on_floor = 1),
 		new/datum/stack_recipe("bed",                      /obj/structure/bed,                    2, one_per_turf = 1, on_floor = 1),
 		)),
 	new/datum/stack_recipe_list("couch parts", list(
@@ -200,7 +201,7 @@ var/list/datum/stack_recipe/plasteel_recipes = list (
 							WOOD RECIPES
 ==================================================================== */
 var/list/datum/stack_recipe/wood_recipes = list (
-	new/datum/stack_recipe("clipboard",			/obj/item/weapon/clipboard,				1													),
+	new/datum/stack_recipe("clipboard",			/obj/item/weapon/storage/bag/clipboard,	1													),
 	new/datum/stack_recipe("wooden sandals",	/obj/item/clothing/shoes/sandal																),
 	new/datum/stack_recipe("wood floor tile",	/obj/item/stack/tile/wood,				1,4,20												),
 	new/datum/stack_recipe("table parts",		/obj/item/weapon/table_parts/wood,		2													),
@@ -222,6 +223,7 @@ var/list/datum/stack_recipe/wood_recipes = list (
 	new/datum/stack_recipe("buckler",			/obj/item/weapon/shield/riot/buckler,	5,		time = 50),
 	new/datum/stack_recipe("wooden paddle",		/obj/item/weapon/macuahuitl,			1,		time = 50),
 	new/datum/stack_recipe("bow frame",         /obj/item/weapon/bow_frame/bow_frame1,             2,      time = 20),
+	new/datum/stack_recipe("peg limb",			/obj/item/weapon/peglimb,				2,		time = 50)
 	)
 
 /* =========================================================================
@@ -243,6 +245,7 @@ var/list/datum/stack_recipe/cardboard_recipes = list (
 	new/datum/stack_recipe("donut box",			/obj/item/weapon/storage/fancy/donut_box/empty			),
 	new/datum/stack_recipe("eggbox",			/obj/item/weapon/storage/fancy/egg_box/empty			),
 	new/datum/stack_recipe("paper bin",			/obj/item/weapon/paper_bin/empty						),
+	new/datum/stack_recipe("empty recharge pack",           /obj/structure/vendomatpack/custom,                  4  ),
 	)
 
 /* ========================================================================
