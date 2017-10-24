@@ -10,7 +10,7 @@ USE `spacestation13` ;
 -- -----------------------------------------------------
 -- Table `spacestation13`.`death`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `tgstation`.`death` (
+CREATE  TABLE IF NOT EXISTS `spacestation13`.`death` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `pod` TEXT NOT NULL COMMENT 'Place of death' ,
   `coord` TEXT NOT NULL COMMENT 'X, Y, Z POD' ,
@@ -35,7 +35,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `spacestation13`.`karma`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `tgstation`.`karma` (
+CREATE  TABLE IF NOT EXISTS `spacestation13`.`karma` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `spendername` TEXT NOT NULL ,
   `spenderkey` TEXT NOT NULL ,
@@ -55,7 +55,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `spacestation13`.`karmatotals`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `tgstation`.`karmatotals` (
+CREATE  TABLE IF NOT EXISTS `spacestation13`.`karmatotals` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `byondkey` TEXT NOT NULL ,
   `karma` INT(11) NOT NULL ,
@@ -68,7 +68,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `spacestation13`.`library`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `tgstation`.`library` (
+CREATE  TABLE IF NOT EXISTS `spacestation13`.`library` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `author` TEXT NOT NULL ,
   `title` TEXT NOT NULL ,
@@ -83,7 +83,7 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 -- Table `spacestation13`.`population`
 -- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `tgstation`.`population` (
+CREATE  TABLE IF NOT EXISTS `spacestation13`.`population` (
   `id` INT(11) NOT NULL AUTO_INCREMENT ,
   `playercount` INT(11) NULL DEFAULT NULL ,
   `admincount` INT(11) NULL DEFAULT NULL ,
