@@ -65,7 +65,7 @@ world/IsBanned(key,address,computer_id)
 			var/duration = query.item[7]
 			var/bantime = query.item[8]
 			var/bantype = query.item[9]
-
+			var/desc = ""
 			var/expires = ""
 			if(text2num(duration) > 0)
 				expires = " The ban is for [duration] minutes and expires on [expiration] (server time)."

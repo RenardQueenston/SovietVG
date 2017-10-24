@@ -26,12 +26,12 @@ var/list/forbidden_varedit_object_types = list(
 			to_chat(usr, "You don't have a saved appearance!")
 		return
 	else
-			if(logging)
-				log_admin("[key_name(usr)] modified [edited_datum]'s appearance to [C.holder.marked_appearance]")
+		if(logging)
+			log_admin("[key_name(usr)] modified [edited_datum]'s appearance to [C.holder.marked_appearance]")
 
-			var/atom/A = edited_datum
-			A.appearance = C.holder.marked_appearance.appearance
-			to_chat(usr, "Changed [edited_datum]'s appearance to [C.holder.marked_appearance]")
+		var/atom/A = edited_datum
+		A.appearance = C.holder.marked_appearance.appearance
+		to_chat(usr, "Changed [edited_datum]'s appearance to [C.holder.marked_appearance]")
 		return
 
 	#define V_MARKED_DATUM "marked_datum"
@@ -55,34 +55,34 @@ var/list/forbidden_varedit_object_types = list(
 	if(edited_datum && edited_variable)
 		//Check if the variable actually exists
 		if(!edited_datum.vars.Find(edited_variable))
-		return
+			return
 
 		old_value = edited_datum.vars[edited_variable]
 
 	if(!new_value)
 		if(autoselect_var_type)
 			if(isnull(old_value))
-		to_chat(usr, "Unable to determine variable type.")
+				to_chat(usr, "Unable to determine variable type.")
 			else if(isnum(old_value))
-		to_chat(usr, "Variable appears to be <b>NUM</b>.")
+				to_chat(usr, "Variable appears to be <b>NUM</b>.")
 				new_variable_type = V_NUM
 			else if(istext(old_value))
-		to_chat(usr, "Variable appears to be <b>TEXT</b>.")
+				to_chat(usr, "Variable appears to be <b>TEXT</b>.")
 				new_variable_type = V_TEXT
 			else if(isloc(old_value))
 				to_chat(usr, "Variable appears to be <b>REFERENCE</b>. Selecting from nearby objects...")
 				new_variable_type = V_OBJECT
 			else if(isicon(old_value))
-		to_chat(usr, "Variable appears to be <b>ICON</b>.")
+				to_chat(usr, "Variable appears to be <b>ICON</b>.")
 				new_variable_type = V_ICON
 			else if(ispath(old_value))
-		to_chat(usr, "Variable appears to be <b>TYPE</b>.")
+				to_chat(usr, "Variable appears to be <b>TYPE</b>.")
 				new_variable_type = V_TYPE
 			else if(istype(old_value,/client))
-		to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
+				to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
 				new_variable_type = V_CLIENT
 			else if(isfile(old_value))
-		to_chat(usr, "Variable appears to be <b>FILE</b>.")
+				to_chat(usr, "Variable appears to be <b>FILE</b>.")
 				new_variable_type = V_FILE
 			else if(islist(old_value))
 				to_chat(usr, "Variable appears to be <b>LIST</b>.")
@@ -115,7 +115,7 @@ var/list/forbidden_varedit_object_types = list(
 				list_item_name = "marked datum (file)"
 			else if(isicon(C.holder.marked_datum))
 				list_item_name = "marked datum (icon)"
-	else
+			else
 				list_item_name = "marked datum ([C.holder.marked_datum])"
 			choices[list_item_name] = V_MARKED_DATUM
 
@@ -132,7 +132,7 @@ var/list/forbidden_varedit_object_types = list(
 
 		switch(selected_type)
 			if(V_CANCEL)
-			return
+				return
 
 			if(V_TEXT)
 				new_value = input("Enter new text:", window_title, old_value) as text
@@ -214,27 +214,27 @@ var/list/forbidden_varedit_object_types = list(
 
 	if (ticker == null)
 		to_chat(src, "Game hasn't started yet.")
-		else
+	else
 		debug_variables(ticker)
 		feedback_add_details("admin_verb","ETV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 //Select and add a value to list L
 /client/proc/mod_list_add(var/list/L)
 	if(!check_rights(R_VAREDIT))
-			return
+		return
 
 	var/added_value = variable_set(src, L)
 
 	switch(alert("Would you like to associate a var with the list entry?",,"Yes","No"))
 		if("Yes")
 			L[added_value] = variable_set(src, L) //haha
-	else
+		else
 			L.Add(added_value)
 
 //Modify a list - either add or remove a balue
 /client/proc/mod_list(var/list/L)
 	if(!check_rights(R_VAREDIT))
-			return
+		return
 
 	//var/list/names = sortList(L)
 	//Don't sort the list - item order is important in some lists
@@ -246,7 +246,7 @@ var/list/forbidden_varedit_object_types = list(
 	else if(variable == "(ADD VAR)")
 		mod_list_add(L)
 		return L
-			else
+	else
 		L.Remove(variable)
 
 	return L

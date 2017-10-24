@@ -161,7 +161,6 @@ var/const/MAX_SAVE_SLOTS = 15
 
 	var/list/player_alt_titles = new()		// the default name of a job like "Medical Doctor"
 
-	var/flavor_text = ""
 	var/med_record = ""
 	var/sec_record = ""
 	var/gen_record = ""
@@ -1599,28 +1598,28 @@ NOTE:  The change will take effect AFTER any current recruiting periods."}
 		//random_character(gender) - This just selects a random character from the OLD character database.
 		randomize_appearance_for() // Correct.
 	else
-	character.setGender(gender)
-	character.age = age
+		character.setGender(gender)
+		character.age = age
 
-	character.r_eyes = r_eyes
-	character.g_eyes = g_eyes
-	character.b_eyes = b_eyes
+		character.r_eyes = r_eyes
+		character.g_eyes = g_eyes
+		character.b_eyes = b_eyes
 
-	character.r_hair = r_hair
-	character.g_hair = g_hair
-	character.b_hair = b_hair
+		character.r_hair = r_hair
+		character.g_hair = g_hair
+		character.b_hair = b_hair
 
-	character.r_facial = r_facial
-	character.g_facial = g_facial
-	character.b_facial = b_facial
+		character.r_facial = r_facial
+		character.g_facial = g_facial
+		character.b_facial = b_facial
 
-	character.s_tone = s_tone
+		character.s_tone = s_tone
 
-	character.h_style = h_style
-	character.f_style = f_style
+		character.h_style = h_style
+		character.f_style = f_style
 
 
-	character.skills = skills
+		character.skills = skills
 
 	// Destroy/cyborgize organs
 

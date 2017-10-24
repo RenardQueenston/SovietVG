@@ -228,14 +228,14 @@ var/global/num_vending_terminals = 1
 	return FALSE
 
 /obj/machinery/vending/proc/normal_refill(obj/structure/vendomatpack/P, mob/user)
-					for (var/datum/data/vending_product/D in product_records)
-						D.amount = D.original_amount
-					for (var/datum/data/vending_product/D in hidden_records)
-						D.amount = D.original_amount
+	for (var/datum/data/vending_product/D in product_records)
+		D.amount = D.original_amount
+	for (var/datum/data/vending_product/D in hidden_records)
+		D.amount = D.original_amount
 	getFromPool(/obj/item/stack/sheet/cardboard, P.loc, 4)
-					qdel(P)
-					if(user.machine==src)
-						src.attack_hand(user)
+	qdel(P)
+	if(user.machine==src)
+		src.attack_hand(user)
 
 /obj/machinery/vending/proc/custom_refill(obj/structure/vendomatpack/P, mob/user)
 	for (var/datum/data/vending_product/D in product_records)
@@ -324,8 +324,8 @@ var/global/num_vending_terminals = 1
 
 		var/obj/item/initializer = typepath
 		if(!is_custom)
-		R.product_name = initial(initializer.name)
-		R.subcategory = initial(initializer.vending_cat)
+			R.product_name = initial(initializer.name)
+			R.subcategory = initial(initializer.vending_cat)
 
 /obj/machinery/vending/proc/get_item_by_type(var/this_type)
 	var/list/datum_products = list()
@@ -454,12 +454,12 @@ var/global/num_vending_terminals = 1
 		var/obj/item/weapon/spacecash/C = W
 		pay_with_cash(C, user)
 	else if(is_type_in_list(W, allowed_inputs))
-			if(user.drop_item(W, src))
-				add_item(W)
-				src.updateUsrDialog()
+		if(user.drop_item(W, src))
+			add_item(W)
+			src.updateUsrDialog()
 	else if(istype(W, /obj/item/weapon/card))
 		//attempt to connect to a new db, and if that doesn't work then fail
-			if(linked_account)
+		if(linked_account)
 			if(account_first_linked)
 				if(!user.Adjacent(src))
 					return 0
@@ -484,7 +484,7 @@ var/global/num_vending_terminals = 1
 					return
 			to_chat(user, "[bicon(src)]<span class='warning'>The specified account doesn't exist.</span>")
 
-			else
+		else
 			to_chat(usr, "[bicon(src)]<span class='warning'>Unable to connect to linked account. Please contact a god.</span>")
 
 //H.wear_id
@@ -940,7 +940,7 @@ var/global/num_vending_terminals = 1
 	spawn(vend_delay)
 
 		if(ispath(R.product_path)) //this if else clause is a little hack to detect if the item is a typepath or an in-game object with references and shit
-		new R.product_path(get_turf(src))
+			new R.product_path(get_turf(src))
 		else
 			if(istype(R.product_path, /obj))
 				var/obj/A = R.product_path

@@ -1056,7 +1056,7 @@ var/list/slot_equipment_priority = list( \
 				M.LAssailant = usr
 				/*if(ishuman(AM))
 					var/mob/living/carbon/human/HM = AM
-					if (HM.drag_damage()) 
+					if (HM.drag_damage())
 						if (HM.isincrit())
 							to_chat(usr,"<span class='warning'>Pulling \the [HM] in their current condition would probably be a bad idea.</span>")
 							add_logs(src, HM, "started dragging critically wounded", admin = (HM.ckey))*/
@@ -1398,13 +1398,6 @@ var/list/slot_equipment_priority = list( \
 	//	if(usr.client)
 	//		var/client/C = usr.client
 	//		C.JoinResponseTeam()
-
-	switch(href_list["flavor_text"])
-		if("more")
-			usr << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", name, replacetext(flavor_text, "\n", "<BR>")), text("window=[];size=500x200", name))
-			onclose(usr, "[name]")
-		if("change")
-			update_flavor_text()
 
 /mob/proc/pull_damage()
 	if(ishuman(src))
@@ -2005,22 +1998,22 @@ mob/proc/on_foot()
 			var/obj/transmog_body_container/tC = transmogged_from
 			if(tC.contained_mob)
 				tC.contained_mob.forceMove(loc)
-			if(key)
+				if(key)
 					tC.contained_mob.key = key
 				tC.contained_mob.timestopped = 0
 				if(istype(tC.contained_mob, /mob/living/carbon))
 					var/mob/living/carbon/C = tC.contained_mob
-				if(istype(C.get_item_by_slot(slot_wear_mask), /obj/item/clothing/mask/morphing))
-					C.drop_item(C.wear_mask, force_drop = 1)
+					if(istype(C.get_item_by_slot(slot_wear_mask), /obj/item/clothing/mask/morphing))
+						C.drop_item(C.wear_mask, force_drop = 1)
 				var/mob/returned_mob = tC.contained_mob
-			returned_mob.transmogged_to = null
+				returned_mob.transmogged_to = null
 				tC.get_rid_of()
-			transmogged_from = null
-			for(var/atom/movable/AM in contents)
-				AM.forceMove(get_turf(src))
-			forceMove(null)
-			qdel(src)
-			return returned_mob
+				transmogged_from = null
+				for(var/atom/movable/AM in contents)
+					AM.forceMove(get_turf(src))
+				forceMove(null)
+				qdel(src)
+				return returned_mob
 		return
 	if(!ispath(target_type, /mob))
 		EXCEPTION(target_type)

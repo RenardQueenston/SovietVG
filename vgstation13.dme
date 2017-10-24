@@ -2252,7 +2252,6 @@
 #include "maprendering\maprendering.dm"
 #include "maps\_map.dm"
 #include "maps\tgstation.dm"
-#include "maps\sosiskoed_jungle.dmm"
 #include "maps\defficiency\areas.dm"
 #include "maps\defficiency\pipes.dm"
 #include "maps\packedstation\telecomms.dm"

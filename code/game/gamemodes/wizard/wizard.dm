@@ -47,8 +47,8 @@
 		if(wizard.special_role || (mixed && (wizard in ticker.mode.modePlayer)))
 			j--
 			continue
-	wizards += wizard
-	modePlayer += wizard
+		wizards += wizard
+		modePlayer += wizard
 		wizard.assigned_role = "MODE" //So they aren't chosen for other jobs.
 		wizard.special_role = "Wizard"
 		wizard.original = wizard.current
